@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://kucrafrrh8h1"]
+
+[ext_resource type="Script" uid="uid://ggvs8agr5dbw" path="res://Scenes/menu/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://bx75gojsrdutm" path="res://assets/background/Brown.png" id="1_48xlc"]
+[ext_resource type="Texture2D" uid="uid://cfipnm1rtrutl" path="res://assets/menu/Cool Text - Dangerous Dave.png" id="2_1ehe0"]
+[ext_resource type="AudioStream" uid="uid://bi48c8tth6uxy" path="res://assets/bgm/2020-06-18_-_8_Bit_Retro_Funk_-_www.FesliyanStudios.com_David_Renda.mp3" id="4_ygw4n"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_1ehe0")
+
+[node name="background" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1148.0
+offset_bottom = 643.0
+texture = ExtResource("1_48xlc")
+stretch_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -527.0
+offset_top = -138.0
+offset_right = 535.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1ehe0")
+expand_mode = 2
+
+[node name="Start" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -52.0
+offset_right = 126.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[node name="Exit" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = 102.0
+offset_right = 126.0
+offset_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[node name="level3" type="Button" parent="."]
+visible = false
+offset_left = 78.0
+offset_top = 498.0
+offset_right = 330.0
+offset_bottom = 602.0
+theme_override_font_sizes/font_size = 30
+text = "Level 3"
+
+[node name="main_menu_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ygw4n")
+volume_db = -11.0
+autoplay = true
+
+[connection signal="pressed" from="Start" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="level3" to="." method="_on_level_3_pressed"]
