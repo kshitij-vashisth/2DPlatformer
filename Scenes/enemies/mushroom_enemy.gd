@@ -5,9 +5,9 @@ extends RigidBody2D
 @onready var ui: CanvasLayer = %UI
 @export var move_speed: float = 300.0
 var direction := -1  # Start moving left
+@onready var sfx_stomp: AudioStreamPlayer2D = $sfx_stomp
 
 @onready var ground_check: RayCast2D = $GroundCheck
-@onready var wall_check: RayCast2D = $WallCheck
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
@@ -17,11 +17,11 @@ func _physics_process(delta: float) -> void:
 	# Let gravity handle vertical motion
 
 	# If there's no ground ahead, turn around
-	if not ground_check.is_colliding() or wall_check.is_colliding():
+	if not ground_check.is_colliding():
 		direction *= -1
 		sprite.scale.x *= -1
 		ground_check.position.x *= -1
-		wall_check.position.x *= -1
+
 
 
 
@@ -44,4 +44,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			#print("enemy damaged")
 			body.spawn_particle()
 			body.bounce_jump()
+			hide()
 			queue_free()

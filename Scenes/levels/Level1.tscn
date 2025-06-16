@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b47kkbptq35is"]
+[gd_scene load_steps=41 format=3 uid="uid://b47kkbptq35is"]
 
 [ext_resource type="Texture2D" uid="uid://dg7t8xynj3wmp" path="res://assets/background/PineForestParallax/MorningLayer6.png" id="1_iuhx3"]
 [ext_resource type="Texture2D" uid="uid://dijf7y23k6yul" path="res://assets/background/PineForestParallax/MorningLayer4.png" id="2_uxirm"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://2tfcp1jpqd2l" path="res://assets/game_elements/heart.png" id="8_kylad"]
 [ext_resource type="PackedScene" uid="uid://u580d5ii8j11" path="res://Scenes/enemies/mushroom_enemy.tscn" id="9_bdlbp"]
 [ext_resource type="Script" uid="uid://1fiuwkd14tpp" path="res://Scenes/levels/pause.gd" id="10_3ybw1"]
+[ext_resource type="AudioStream" uid="uid://bgl7jbt75d7ba" path="res://assets/sfx/coin-recieved-230517.mp3" id="11_s1a2m"]
 [ext_resource type="Texture2D" uid="uid://b52uy3a5xwnp0" path="res://assets/game_elements/Cherries.png" id="12_su1cr"]
 [ext_resource type="Script" uid="uid://b3jqbu0mt24ki" path="res://Scenes/levels/ui.gd" id="12_uxirm"]
 [ext_resource type="Script" uid="uid://crqutdk0y0hv0" path="res://Scenes/levels/fall_area.gd" id="14_uxirm"]
@@ -423,10 +424,10 @@ position = Vector2(521, 30)
 position = Vector2(712, 441)
 
 [node name="collectible5" parent="SceneObjects/CollectibleNode" instance=ExtResource("4_kylad")]
-position = Vector2(886, 119)
+position = Vector2(885, 88)
 
 [node name="collectible6" parent="SceneObjects/CollectibleNode" instance=ExtResource("4_kylad")]
-position = Vector2(1332, 105)
+position = Vector2(1335, 83)
 
 [node name="collectible7" parent="SceneObjects/CollectibleNode" instance=ExtResource("4_kylad")]
 position = Vector2(1660, 293)
@@ -441,7 +442,7 @@ target_level = ExtResource("6_ysn8j")
 [node name="Enemies" type="Node" parent="SceneObjects"]
 
 [node name="MushroomEnemy" parent="SceneObjects/Enemies" instance=ExtResource("9_bdlbp")]
-position = Vector2(1024, 192)
+position = Vector2(928, 190)
 
 [node name="MushroomEnemy2" parent="SceneObjects/Enemies" instance=ExtResource("9_bdlbp")]
 position = Vector2(1948, 191)
@@ -455,6 +456,11 @@ position = Vector2(861, 567)
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_2h8qs")
+
+[node name="collect_sound" type="AudioStreamPlayer2D" parent="GameManager"]
+unique_name_in_owner = true
+stream = ExtResource("11_s1a2m")
+volume_db = -16.0
 
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("hearts")]
 unique_name_in_owner = true
@@ -605,6 +611,7 @@ stream = ExtResource("15_qwlny")
 volume_db = -10.895
 autoplay = true
 max_distance = 4000.0
+parameters/looping = true
 
 [connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/ResumeButton" to="UI/Pause" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/MainMenuButton" to="UI/Pause" method="_on_main_menu_button_pressed"]

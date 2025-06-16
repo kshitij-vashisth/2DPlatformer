@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var particle: PackedScene
 @onready var sfx_jump: AudioStreamPlayer2D = $sfx_jump
+@onready var sfx_coin_collect: AudioStreamPlayer2D = $SFXCoinCollect
 
 @onready var collision_shape_2d_normal: CollisionShape2D = $CollisionShape2DNormal
 @onready var collision_shape_2d_crouch: CollisionShape2D = $CollisionShape2DCrouch
@@ -94,3 +95,12 @@ func _physics_process(delta: float) -> void:
 		sprite_2d.animation = "crouch"
 	
 	
+
+
+
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.get_parent().name == "CollectibleNode":
+		print("play")
+		sfx_coin_collect.play()
