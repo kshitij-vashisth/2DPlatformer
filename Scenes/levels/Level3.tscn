@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dqfi7lfkoyiqt"]
+[gd_scene load_steps=49 format=3 uid="uid://dqfi7lfkoyiqt"]
 
 [ext_resource type="Texture2D" uid="uid://dg7t8xynj3wmp" path="res://assets/background/PineForestParallax/MorningLayer6.png" id="1_c2svo"]
 [ext_resource type="Texture2D" uid="uid://dijf7y23k6yul" path="res://assets/background/PineForestParallax/MorningLayer4.png" id="2_b05me"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://2tfcp1jpqd2l" path="res://assets/game_elements/heart.png" id="10_rqdlv"]
 [ext_resource type="Script" uid="uid://1fiuwkd14tpp" path="res://Scenes/levels/pause.gd" id="11_jnewo"]
 [ext_resource type="Script" uid="uid://b3jqbu0mt24ki" path="res://Scenes/levels/ui.gd" id="11_tobbh"]
+[ext_resource type="Texture2D" uid="uid://b52uy3a5xwnp0" path="res://assets/game_elements/Cherries.png" id="15_a8ktn"]
 [ext_resource type="AudioStream" uid="uid://c02eqceqv4tuk" path="res://assets/bgm/2020-04-24_-_Arcade_Kid_-_FesliyanStudios.com_-_David_Renda.mp3" id="16_b05me"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
@@ -290,6 +291,137 @@ _bundled = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p6pjf"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2a3a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqdlv"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wavpn"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrgkq"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0epxl"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3fj8"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djss1"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dov1o"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chi5k"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i21rv"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2bwf"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmtwc"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ika7k"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu7h1"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44wuu"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2agux"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr3qf"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew4kb"]
+atlas = ExtResource("15_a8ktn")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dh0id"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqdlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wavpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrgkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0epxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3fj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djss1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dov1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chi5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i21rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2bwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmtwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ika7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu7h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44wuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2agux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr3qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew4kb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4vmnb"]
+
 [node name="Node" type="Node"]
 
 [node name="SceneObjects" type="Node" parent="."]
@@ -372,6 +504,12 @@ shape = SubResource("WorldBoundaryShape2D_p6pjf")
 unique_name_in_owner = true
 script = ExtResource("9_x2a3a")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_b05me")
+volume_db = -10.895
+autoplay = true
+max_distance = 4000.0
+
 [node name="UI" type="CanvasLayer" parent="." node_paths=PackedStringArray("hearts")]
 unique_name_in_owner = true
 script = ExtResource("11_tobbh")
@@ -382,6 +520,7 @@ offset_left = 10.0
 offset_top = 13.0
 offset_right = 153.0
 offset_bottom = 67.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x2a3a")
 metadata/_edit_use_anchors_ = true
 
 [node name="PointsLabel" type="Label" parent="UI/Panel"]
@@ -393,10 +532,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
-text = "Points: 0"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/Panel"]
+position = Vector2(20, 23)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_dh0id")
+autoplay = "default"
 
 [node name="Hearts" type="Panel" parent="UI"]
 anchors_preset = 1
@@ -407,6 +552,7 @@ offset_top = 11.0
 offset_right = -11.0
 offset_bottom = 65.0
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4vmnb")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Hearts"]
 layout_mode = 1
@@ -500,11 +646,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Main Menu
 "
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("16_b05me")
-volume_db = -10.895
-autoplay = true
 
 [connection signal="body_entered" from="SceneObjects/world boundary" to="SceneObjects/world boundary" method="_on_body_entered"]
 [connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/ResumeButton" to="UI/Pause" method="_on_resume_button_pressed"]

@@ -3,6 +3,10 @@ extends CharacterBody2D
 @export var particle: PackedScene
 @onready var sfx_jump: AudioStreamPlayer2D = $sfx_jump
 
+@onready var collision_shape_2d_normal: CollisionShape2D = $CollisionShape2DNormal
+@onready var collision_shape_2d_crouch: CollisionShape2D = $CollisionShape2DCrouch
+
+var last_facing_left: bool = false
 var bounced_this_frame: bool = false
 const SPEED: float = 400.0
 const JUMP_VELOCITY: float = -1000.0
@@ -24,7 +28,7 @@ func jump() -> void:
 
 func side_jump(x) -> void:
 	velocity.y = JUMP_VELOCITY/2
-	velocity.x = 2*x
+	velocity.x = 1.5*x
 	
 func spawn_particle() -> void:
 	var particle_node = particle.instantiate()
@@ -34,8 +38,11 @@ func spawn_particle() -> void:
 	particle_node.queue_free()
 
 func _physics_process(delta: float) -> void:
+	var is_crouching = Input.is_action_pressed("down") and is_on_floor()
+	$CollisionShape2DNormal.disabled = is_crouching
+	$CollisionShape2DCrouch.disabled = not is_crouching
 	# Add the gravity.
-	if is_on_floor():
+	if is_on_floor() and not(is_crouching):
 		jump_count = 0
 		# running
 		if (velocity.x > 1 || velocity.x < -1):
@@ -54,19 +61,36 @@ func _physics_process(delta: float) -> void:
 		jump_count = 1
 		bounced_this_frame = false
 
-	# Handle jump.
+	# Handle jump down through platform
+	if Input.is_action_pressed("down") and Input.is_action_just_pressed("jump") and is_on_floor():
+		position.y += 1  # nudge down through one-way
+		return  # prevent normal jump this frame
+
+	# Handle normal jump
 	if Input.is_action_just_pressed("jump") and jump_count < 2:
 		jump()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
+	if not is_crouching:
+		var direction := Input.get_axis("left", "right")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, STEP_SPEED) # SPEED replaced with step speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, STEP_SPEED) # SPEED replaced with step speed
+		velocity.x = move_toward(velocity.x, 0, STEP_SPEED)  # Gradually stop moving while crouched
 
 	move_and_slide()
 
-	var isLeft:bool = velocity.x < 0
-	sprite_2d.flip_h = isLeft
+	if velocity.x > 1:
+		last_facing_left = false
+	elif velocity.x < -1:
+		last_facing_left = true
+
+	sprite_2d.flip_h = last_facing_left
+	
+	if Input.is_action_pressed("down") and is_on_floor():
+		sprite_2d.animation = "crouch"
+	
+	

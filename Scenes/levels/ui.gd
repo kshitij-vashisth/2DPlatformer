@@ -2,7 +2,6 @@ extends CanvasLayer  # or Control
 
 @onready var points_label: Label = %PointsLabel
 @export var hearts: Array[Node]
-@onready var sfx_jump: AudioStreamPlayer2D = $sfx_jump
 
 func _ready() -> void:
 	update_ui()
@@ -25,7 +24,7 @@ func add_points() -> void:
 
 func update_points() -> void:
 	if points_label:
-		points_label.text = "Points : " + str(GameManager.points)
+		points_label.text = str(GameManager.points)
 
 func update_hearts() -> void:
 	for h in 3:
