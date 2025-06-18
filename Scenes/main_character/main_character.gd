@@ -77,6 +77,9 @@ func _physics_process(delta: float) -> void:
 		var direction := Input.get_axis("left", "right")
 		if direction:
 			velocity.x = direction * SPEED
+			if Input.is_action_pressed("sprint"):
+				velocity.x *= 2 
+			
 		else:
 			velocity.x = move_toward(velocity.x, 0, STEP_SPEED) # SPEED replaced with step speed
 	else:

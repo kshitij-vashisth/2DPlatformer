@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://c131a5obuijmu" path="res://assets/game_elements/Collected.png" id="4_luq0l"]
 [ext_resource type="PackedScene" uid="uid://drb3fvfmixb4t" path="res://Scenes/game_objects/collectible.tscn" id="4_tobbh"]
 [ext_resource type="PackedScene" uid="uid://byj8yyf6ju5p1" path="res://Scenes/game_objects/end.tscn" id="5_cqcly"]
-[ext_resource type="PackedScene" uid="uid://kucrafrrh8h1" path="res://Scenes/menu/main_menu.tscn" id="6_c2svo"]
 [ext_resource type="PackedScene" uid="uid://u580d5ii8j11" path="res://Scenes/enemies/mushroom_enemy.tscn" id="7_b05me"]
 [ext_resource type="Script" uid="uid://crqutdk0y0hv0" path="res://Scenes/levels/fall_area.gd" id="8_a8ktn"]
+[ext_resource type="PackedScene" uid="uid://ite1oa8agpg2" path="res://Scenes/menu/winner.tscn" id="9_a8ktn"]
 [ext_resource type="Script" uid="uid://cu5cy0xx6blpj" path="res://Scenes/levels/game_manager.gd" id="9_x2a3a"]
 [ext_resource type="Texture2D" uid="uid://2tfcp1jpqd2l" path="res://assets/game_elements/heart.png" id="10_rqdlv"]
 [ext_resource type="Script" uid="uid://1fiuwkd14tpp" path="res://Scenes/levels/pause.gd" id="11_jnewo"]
@@ -480,7 +480,7 @@ position = Vector2(413, 639)
 
 [node name="Finish" parent="SceneObjects" instance=ExtResource("5_cqcly")]
 position = Vector2(2039, 206)
-target_level = ExtResource("6_c2svo")
+target_level = ExtResource("9_a8ktn")
 
 [node name="Enemies" type="Node" parent="SceneObjects"]
 

@@ -7,9 +7,7 @@ func _ready() -> void:
 	update_ui()
 
 func _game_over() -> void:
-	GameManager.points = 0
-	GameManager.lives = 3
-	get_tree().change_scene_to_file("res://Scenes/menu/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/menu/game_over.tscn")
 
 func decrease_health() -> void:
 	GameManager.lives -= 1

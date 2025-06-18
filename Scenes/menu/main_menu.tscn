@@ -643,6 +643,6 @@ position = Vector2(696, 599)
 position = Vector2(-113, -280)
 
 [connection signal="pressed" from="Start" to="." method="_on_level_1_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="level3" to="." method="_on_level_3_pressed"]

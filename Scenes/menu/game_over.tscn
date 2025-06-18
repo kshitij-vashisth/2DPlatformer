@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://8h4p1xhiho8o"]
+
+[ext_resource type="Script" uid="uid://de6xyrjsl2ggf" path="res://Scenes/menu/game_over.gd" id="1_5g61f"]
+[ext_resource type="PackedScene" uid="uid://kucrafrrh8h1" path="res://Scenes/menu/main_menu.tscn" id="2_pf6i6"]
+[ext_resource type="Texture2D" uid="uid://dx6d3c3h8e1cf" path="res://assets/background/Green.png" id="2_xbbjr"]
+[ext_resource type="Texture2D" uid="uid://b52uy3a5xwnp0" path="res://assets/game_elements/Cherries.png" id="3_pf6i6"]
+[ext_resource type="AudioStream" uid="uid://bj34yw3bhkwb0" path="res://assets/sfx/smb_gameover.mp3" id="5_i770l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g282k"]
+atlas = ExtResource("3_pf6i6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ndh13"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g282k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6h677"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_5g61f")
+target_level = ExtResource("2_pf6i6")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1151.0
+offset_bottom = 649.0
+texture = ExtResource("2_xbbjr")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
+position = Vector2(469, 319)
+scale = Vector2(2.5, 2.46875)
+sprite_frames = SubResource("SpriteFrames_ndh13")
+autoplay = "default"
+
+[node name="Score" type="Panel" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6h677")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/Score"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -317.5
+offset_top = -187.5
+offset_right = 317.5
+offset_bottom = -54.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 60
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score2" type="RichTextLabel" parent="Background/Score"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -56.0
+offset_right = 62.5
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Score
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="game_over_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_i770l")
+volume_db = -12.0
+autoplay = true
