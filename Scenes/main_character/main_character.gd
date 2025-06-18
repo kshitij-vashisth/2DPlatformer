@@ -1,8 +1,15 @@
 extends CharacterBody2D
 
+
+@onready var bullet_spawn_point: Marker2D = $BulletSpawnPoint
+var set_pos_bullet_spawn = bullet_spawn_point
+var bullet_path = preload("res://Scenes/weapons/Bullet.tscn")
+var last_direction := 1  # 1 = right, -1 = left
+var has_gun: bool = true
 @export var particle: PackedScene
 @onready var sfx_jump: AudioStreamPlayer2D = $sfx_jump
-@onready var sfx_coin_collect: AudioStreamPlayer2D = $SFXCoinCollect
+@onready var sfx_coin_collect: AudioStreamPlayer2D = %SFXCoinCollect
+@onready var gun: Sprite2D = $Gun
 
 @onready var collision_shape_2d_normal: CollisionShape2D = $CollisionShape2DNormal
 @onready var collision_shape_2d_crouch: CollisionShape2D = $CollisionShape2DCrouch
@@ -19,6 +26,24 @@ func bounce_jump() -> void:
 	bounced_this_frame = true          # remember we bounced
 	#jump_count -= 1
 	jump()         # launch upward
+
+func shoot(direction, bullet_spawn_point) -> void:
+	var bullets = get_tree().get_nodes_in_group("bullets")
+	if bullets.size() >= 2:
+		return  # Already 2 bullets active, don't shoot
+		
+	print("shooting")
+	gun.show()
+	#sprite_2d.animation = "shooting"
+	var bullet = bullet_path.instantiate()
+	get_parent().add_child(bullet)
+	#get_tree().current_scene.add_child(bullet)
+	bullet.dir = direction
+	bullet.position = bullet_spawn_point.global_position
+	print(bullet.global_position)
+	await get_tree().create_timer(0.1).timeout
+	gun.hide()
+	
 
 func jump() -> void:	
 	jump_count += 1
@@ -37,6 +62,14 @@ func spawn_particle() -> void:
 	get_parent().add_child(particle_node)
 	await get_tree().create_timer(0.3).timeout
 	particle_node.queue_free()
+	
+func _ready()->void:
+	gun.hide()
+
+func _on_coin_collector_area_entered(area: Area2D) -> void:
+	if area.get_parent().name == "CollectibleNode":
+		print("play")
+		sfx_coin_collect.play()
 
 func _physics_process(delta: float) -> void:
 	var is_crouching = Input.is_action_pressed("down") and is_on_floor()
@@ -75,6 +108,20 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if not is_crouching:
 		var direction := Input.get_axis("left", "right")
+		
+		
+		# Flip gun sprite based on direction
+		if direction != 0:
+			last_direction = direction
+			
+		gun.flip_h = last_direction < 0
+		# Move gun to the correct side
+		if last_direction < 0:
+			gun.position.x = -abs(gun.position.x)  # Move to left side
+		else:
+			gun.position.x = abs(gun.position.x)   # Move to right side
+			
+		# player direction	
 		if direction:
 			velocity.x = direction * SPEED
 			if Input.is_action_pressed("sprint"):
@@ -97,13 +144,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("down") and is_on_floor():
 		sprite_2d.animation = "crouch"
 	
+	if last_direction < 0:
+		bullet_spawn_point.position.x = -abs(bullet_spawn_point.position.x)
+	else: 	
+		bullet_spawn_point.position.x = abs(bullet_spawn_point.position.x)
 	
-
-
-
-
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.get_parent().name == "CollectibleNode":
-		print("play")
-		sfx_coin_collect.play()
+	if Input.is_action_just_pressed("fire") and has_gun == true:
+		shoot(last_direction, bullet_spawn_point)

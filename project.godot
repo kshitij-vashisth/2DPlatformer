@@ -23,6 +23,11 @@ GameManager="*res://Scenes/levels/game_manager.gd"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+bullets="number of bullets"
+enemies=""
+
 [gui]
 
 theme/custom_font="uid://dc1jrk8l34wr3"

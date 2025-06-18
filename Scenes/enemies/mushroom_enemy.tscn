@@ -115,7 +115,7 @@ animations = [{
 size = Vector2(66, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fl1rr"]
-size = Vector2(72, 57)
+size = Vector2(78, 57)
 
 [node name="MushroomEnemy" type="RigidBody2D"]
 lock_rotation = true
@@ -128,6 +128,7 @@ sprite_frames = SubResource("SpriteFrames_h42vg")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 19.5)
 shape = SubResource("RectangleShape2D_h2dsx")
 

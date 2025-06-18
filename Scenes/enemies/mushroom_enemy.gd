@@ -10,6 +10,9 @@ var direction := -1  # Start moving left
 @onready var ground_check: RayCast2D = $GroundCheck
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+func _ready() -> void:
+	add_to_group("enemies")
+
 func _physics_process(delta: float) -> void:
 # Apply horizontal motion manually
 	linear_velocity.x = direction * move_speed
@@ -26,6 +29,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("bullets"):
+		print("hit")
+		queue_free()
+		
 	#var y_delta: float
 	if (body.name == "CharacterBody2D"):
 		var y_delta: float = position.y - body.position.y
