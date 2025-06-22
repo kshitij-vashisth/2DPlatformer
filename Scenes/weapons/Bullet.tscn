@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm23lvmv5hrt3"]
+[gd_scene load_steps=5 format=3 uid="uid://cm23lvmv5hrt3"]
 
 [ext_resource type="Script" uid="uid://cn01vg85bqnmh" path="res://Scenes/weapons/bullets.gd" id="1_eyr0o"]
 [ext_resource type="Texture2D" uid="uid://d07jw0bt1lxxr" path="res://assets/weapons/pistol_bullet.png" id="2_tc5ax"]
-[ext_resource type="AudioStream" uid="uid://dxbvplha7gvee" path="res://assets/sfx/gun/enemy-gun-101soundboards.mp3" id="4_1x6ii"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1x6ii"]
 size = Vector2(12, 2)
@@ -24,8 +23,5 @@ shape = SubResource("RectangleShape2D_1x6ii")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sound_play_area"]
 shape = SubResource("RectangleShape2D_dlo4o")
-
-[node name="sfx_gunshot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_1x6ii")
 
 [connection signal="area_entered" from="sound_play_area" to="." method="_on_sound_play_area_area_entered"]

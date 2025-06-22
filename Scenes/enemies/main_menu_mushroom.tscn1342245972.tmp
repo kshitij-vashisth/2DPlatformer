@@ -1,0 +1,140 @@
+[gd_scene load_steps=20 format=3 uid="uid://bhpy5yacfwwol"]
+
+[ext_resource type="Script" uid="uid://dglf36b8eyqd5" path="res://Scenes/enemies/main_menu_mushroom.gd" id="1_bd5la"]
+[ext_resource type="Texture2D" uid="uid://c81g3yw3srqb7" path="res://assets/enemies/Mushroom/Idle (32x32).png" id="2_7jqmh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb1qr"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kn4g"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbw57"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbd6s"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1blo"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11lxr"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3g7so"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcdvs"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ircf"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krhdo"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlhwu"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ayp2"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bua1g"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s73cf"]
+atlas = ExtResource("2_7jqmh")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y3y48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb1qr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kn4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbw57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbd6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1blo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11lxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3g7so")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcdvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ircf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krhdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlhwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ayp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bua1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s73cf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhxnd"]
+size = Vector2(66, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1bbl"]
+size = Vector2(78, 57)
+
+[node name="MainMenuMushroom" type="RigidBody2D"]
+script = ExtResource("1_bd5la")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_y3y48")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 19.5)
+shape = SubResource("RectangleShape2D_qhxnd")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 19.5)
+shape = SubResource("RectangleShape2D_t1bbl")
+
+[node name="GroundCheck" type="RayCast2D" parent="."]
+position = Vector2(-38, 36)
+target_position = Vector2(-9, 13)

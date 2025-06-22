@@ -98,6 +98,12 @@ sprint={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Ground"
+2d_physics/layer_3="Pass Through"
+
 [physics]
 
 2d/default_gravity=2500.0

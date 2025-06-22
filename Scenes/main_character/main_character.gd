@@ -4,11 +4,13 @@ extends CharacterBody2D
 @onready var bullet_spawn_point: Marker2D = $BulletSpawnPoint
 var set_pos_bullet_spawn = bullet_spawn_point
 var bullet_path = preload("res://Scenes/weapons/Bullet.tscn")
-var last_direction := 1  # 1 = right, -1 = left
+var last_direction: float = 1  # 1 = right, -1 = left
 var has_gun: bool = true
 @export var particle: PackedScene
 @onready var sfx_jump: AudioStreamPlayer2D = $sfx_jump
 @onready var sfx_coin_collect: AudioStreamPlayer2D = %SFXCoinCollect
+@onready var sfx_shoot: AudioStreamPlayer2D = $sfx_shoot
+
 @onready var gun: Sprite2D = $Gun
 
 @onready var collision_shape_2d_normal: CollisionShape2D = $CollisionShape2DNormal
@@ -27,11 +29,12 @@ func bounce_jump() -> void:
 	#jump_count -= 1
 	jump()         # launch upward
 
-func shoot(direction, bullet_spawn_point) -> void:
+func shoot(direction, bsp) -> void:
 	var bullets = get_tree().get_nodes_in_group("bullets")
 	if bullets.size() >= 2:
 		return  # Already 2 bullets active, don't shoot
 		
+	sfx_shoot.play()	
 	print("shooting")
 	gun.show()
 	#sprite_2d.animation = "shooting"
@@ -39,7 +42,7 @@ func shoot(direction, bullet_spawn_point) -> void:
 	get_parent().add_child(bullet)
 	#get_tree().current_scene.add_child(bullet)
 	bullet.dir = direction
-	bullet.position = bullet_spawn_point.global_position
+	bullet.position = bsp.global_position
 	print(bullet.global_position)
 	await get_tree().create_timer(0.1).timeout
 	gun.hide()

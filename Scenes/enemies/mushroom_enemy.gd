@@ -1,29 +1,58 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 @onready var sfx_hurt: AudioStreamPlayer2D = $sfx_hurt
 
 @onready var ui: CanvasLayer = %UI
 @export var move_speed: float = 300.0
+var health: int = 1
+
 var direction := -1  # Start moving left
 @onready var sfx_stomp: AudioStreamPlayer2D = $sfx_stomp
-
+@onready var wall_check: RayCast2D = $WallCheck
 @onready var ground_check: RayCast2D = $GroundCheck
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+
+
+func add_gravity(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+func move_enemy()->void:
+	velocity.x = move_speed * direction
+	sprite.animation = "run"
+	
+func reverse_direction()->void:
+	if is_on_wall():
+		direction = -direction
+		
+func platform_edge()->void:
+	if not ground_check.is_colliding():
+		direction = -direction
+		wall_check.position.x *= -1
+		ground_check.position.x *= -1
+		sprite.scale.x *= -1
+
+func wall_checker()->void:
+	if wall_check.is_colliding():
+		direction = -direction
+		wall_check.position.x *= -1
+		ground_check.position.x *= -1
+		sprite.scale.x *= -1
+
+	
 
 func _ready() -> void:
 	add_to_group("enemies")
 
 func _physics_process(delta: float) -> void:
-# Apply horizontal motion manually
-	linear_velocity.x = direction * move_speed
-
-	# Let gravity handle vertical motion
-
-	# If there's no ground ahead, turn around
-	if not ground_check.is_colliding():
-		direction *= -1
-		sprite.scale.x *= -1
-		ground_check.position.x *= -1
+	add_gravity(delta)
+	move_enemy()
+	move_and_slide()
+	#reverse_direction()
+	wall_checker()
+	platform_edge()
 
 
 
@@ -31,15 +60,18 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):
 		print("hit")
+		body.queue_free()
 		queue_free()
 		
 	#var y_delta: float
 	if (body.name == "CharacterBody2D"):
 		var y_delta: float = position.y - body.position.y
 		var x_delta: float = body.position.x - position.x
+		print(y_delta)
+		
 		
 		#print(y_delta)
-		if y_delta < 50:
+		if y_delta < 20:
 			#print("player health decrease")
 			sfx_hurt.play()
 			ui.decrease_health()
@@ -47,7 +79,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				body.side_jump(800)
 			else:
 				body.side_jump(-800)
-		elif y_delta > 50:
+		elif y_delta > 20:
 			#print("enemy damaged")
 			body.spawn_particle()
 			body.bounce_jump()
