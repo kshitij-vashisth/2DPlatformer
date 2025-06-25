@@ -272,8 +272,8 @@ target_position = Vector2(0, 14)
 collision_mask = 6
 
 [node name="WallCheck" type="RayCast2D" parent="."]
-position = Vector2(-40, 14)
-target_position = Vector2(-10, 0)
+position = Vector2(-34, 15)
+target_position = Vector2(-16, 0)
 collision_mask = 6
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

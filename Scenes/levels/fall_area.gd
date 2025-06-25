@@ -6,7 +6,7 @@ func _game_over() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == "CharacterBody2D":
+	if body.name == "Player":
 		call_deferred("_reload_scene")
 		
 func _reload_scene() -> void:

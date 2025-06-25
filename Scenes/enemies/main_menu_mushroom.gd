@@ -34,7 +34,7 @@ func platform_edge()->void:
 		ground_check.position.x *= -1
 		animated_sprite_2d.scale.x *= -1
 		turns +=1
-		print(turns)
+		#print(turns)
 
 func _physics_process(delta: float) -> void:
 	if dead:

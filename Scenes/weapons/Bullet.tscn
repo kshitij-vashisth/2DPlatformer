@@ -1,27 +1,87 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm23lvmv5hrt3"]
+[gd_scene load_steps=13 format=3 uid="uid://cm23lvmv5hrt3"]
 
 [ext_resource type="Script" uid="uid://cn01vg85bqnmh" path="res://Scenes/weapons/bullets.gd" id="1_eyr0o"]
+[ext_resource type="Texture2D" uid="uid://cakheemwj2lkx" path="res://assets/weapons/bullet/All_Fire_Bullet_Pixel_16x16_01.png" id="2_1x6ii"]
 [ext_resource type="Texture2D" uid="uid://d07jw0bt1lxxr" path="res://assets/weapons/pistol_bullet.png" id="2_tc5ax"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1x6ii"]
-size = Vector2(12, 2)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlo4o"]
+atlas = ExtResource("2_1x6ii")
+region = Rect2(176, 304, 16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlo4o"]
-size = Vector2(12, 2)
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1vyw"]
+atlas = ExtResource("2_1x6ii")
+region = Rect2(192, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r4i5"]
+atlas = ExtResource("2_1x6ii")
+region = Rect2(208, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ta3s"]
+atlas = ExtResource("2_1x6ii")
+region = Rect2(224, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdfdm"]
+atlas = ExtResource("2_1x6ii")
+region = Rect2(240, 304, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huhsa"]
+atlas = ExtResource("2_1x6ii")
+region = Rect2(256, 304, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jpokg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlo4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1vyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r4i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ta3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdfdm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huhsa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tc5ax"]
+radius = 5.52268
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1x6ii"]
+radius = 5.5
 
 [node name="Bullet" type="CharacterBody2D"]
 position = Vector2(29, 31)
+scale = Vector2(2, 2)
 script = ExtResource("1_eyr0o")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_jpokg")
+autoplay = "default"
+frame = 5
+frame_progress = 0.179783
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_tc5ax")
 
 [node name="Bullet" type="CollisionShape2D" parent="." groups=["bullets"]]
-shape = SubResource("RectangleShape2D_1x6ii")
+shape = SubResource("CircleShape2D_tc5ax")
 
 [node name="sound_play_area" type="Area2D" parent="." groups=["bullets", "enemies"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sound_play_area"]
-shape = SubResource("RectangleShape2D_dlo4o")
+shape = SubResource("CircleShape2D_1x6ii")
 
 [connection signal="area_entered" from="sound_play_area" to="." method="_on_sound_play_area_area_entered"]

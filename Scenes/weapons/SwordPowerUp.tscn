@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://i1hbivvfqq7o"]
+
+[ext_resource type="Script" uid="uid://bq73wv00qokf8" path="res://Scenes/weapons/sword_power_up.gd" id="1_78yqr"]
+[ext_resource type="Texture2D" uid="uid://ceeofndhxxh6f" path="res://assets/game_elements/sword_sprite.png" id="2_2hmg6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pcg3r"]
+radius = 51.1957
+
+[node name="SwordPowerUp" type="Area2D"]
+script = ExtResource("1_78yqr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_2hmg6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pcg3r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -26,6 +26,8 @@ func move_enemy()->void:
 func reverse_direction()->void:
 	if is_on_wall():
 		direction = -direction
+		ground_check.position.x *= -1
+		sprite.scale.x *= -1
 		
 func platform_edge()->void:
 	if not ground_check.is_colliding():
@@ -37,9 +39,7 @@ func platform_edge()->void:
 func wall_checker()->void:
 	if wall_check.is_colliding():
 		direction = -direction
-		wall_check.position.x *= -1
-		ground_check.position.x *= -1
-		sprite.scale.x *= -1
+		
 
 	
 
@@ -49,10 +49,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	add_gravity(delta)
 	move_enemy()
-	move_and_slide()
-	#reverse_direction()
-	wall_checker()
+	#wall_checker()
 	platform_edge()
+	move_and_slide()
+	reverse_direction()
+	
 
 
 
@@ -64,10 +65,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		queue_free()
 		
 	#var y_delta: float
-	if (body.name == "CharacterBody2D"):
+	if (body.name == "Player"):
 		var y_delta: float = position.y - body.position.y
 		var x_delta: float = body.position.x - position.x
-		print(y_delta)
+		#print(y_delta)
 		
 		
 		#print(y_delta)
@@ -76,9 +77,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			sfx_hurt.play()
 			ui.decrease_health()
 			if x_delta > 0:
-				body.side_jump(800)
+				body.side_jump(500)
 			else:
-				body.side_jump(-800)
+				body.side_jump(-500)
 		elif y_delta > 20:
 			#print("enemy damaged")
 			body.spawn_particle()

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 2000.0  # Much more reasonable value than 8000
+const SPEED = 800.0  # Much more reasonable value than 8000
 var dir: float = 1  # should be either 1 (right) or -1 (left)
 
 func _ready() -> void:
@@ -15,7 +15,7 @@ func _delete_later() -> void:
 func _physics_process(delta: float) -> void:
 	var _v1 = delta
 	velocity.x = SPEED * (dir/abs(dir))
-	print(velocity.x)
+	#print(velocity.x)
 	move_and_slide()
 	
 	# Check for collision

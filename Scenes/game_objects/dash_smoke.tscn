@@ -1,0 +1,116 @@
+[gd_scene load_steps=17 format=3 uid="uid://chwd8u36k67ht"]
+
+[ext_resource type="Texture2D" uid="uid://bwr00lcpsjqdg" path="res://assets/game_elements/Free Smoke Fx  Pixel 07.png" id="1_y4sxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pk2ha"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(0, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cadk"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(64, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18rey"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(128, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f1xr"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(192, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prbp7"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(256, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pscfp"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(320, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gey7b"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(384, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o78lf"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(448, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqnic"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(512, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y64sd"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(576, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2gyy"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(640, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8i52w"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(704, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_todiv"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(768, 640, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amso8"]
+atlas = ExtResource("1_y4sxa")
+region = Rect2(832, 640, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s0s6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pk2ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cadk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18rey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f1xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prbp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pscfp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gey7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o78lf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqnic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y64sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2gyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8i52w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_todiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amso8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="DashSmoke" type="AnimatedSprite2D"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_s0s6x")
+autoplay = "default"
+frame = 13
+frame_progress = 1.0

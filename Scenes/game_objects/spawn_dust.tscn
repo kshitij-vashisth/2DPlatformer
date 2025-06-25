@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://cllf78dhut7mv"]
+
+[ext_resource type="Texture2D" uid="uid://c7ooqfv01lgqv" path="res://assets/character/dusty-ezgif.com-gif-to-sprite-converter.png" id="1_u0it2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wopc"]
+atlas = ExtResource("1_u0it2")
+region = Rect2(0, 0, 10, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er8l6"]
+atlas = ExtResource("1_u0it2")
+region = Rect2(10, 0, 10, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amc64"]
+atlas = ExtResource("1_u0it2")
+region = Rect2(20, 0, 10, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc5xb"]
+atlas = ExtResource("1_u0it2")
+region = Rect2(30, 0, 10, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkcd1"]
+atlas = ExtResource("1_u0it2")
+region = Rect2(40, 0, 10, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uyc3p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wopc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er8l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amc64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc5xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkcd1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[node name="SpawnDust" type="AnimatedSprite2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_uyc3p")
+frame = 3
+frame_progress = 0.225636
