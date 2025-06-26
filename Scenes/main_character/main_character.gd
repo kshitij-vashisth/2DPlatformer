@@ -458,6 +458,7 @@ func _physics_process(delta: float) -> void:
 	#===============================================================================================
 	
 	#TomeInvincibility==============================================================================
+	$CollisionShape2DNormal.disabled = tome_using
 	if tome_using:
 		sprite_2d.modulate.a = 0.3
 	else:
