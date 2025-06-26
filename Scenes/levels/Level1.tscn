@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://b47kkbptq35is"]
+[gd_scene load_steps=49 format=4 uid="uid://b47kkbptq35is"]
 
 [ext_resource type="Texture2D" uid="uid://dg7t8xynj3wmp" path="res://assets/background/PineForestParallax/MorningLayer6.png" id="1_iuhx3"]
 [ext_resource type="Texture2D" uid="uid://dijf7y23k6yul" path="res://assets/background/PineForestParallax/MorningLayer4.png" id="2_uxirm"]
@@ -14,13 +14,14 @@
 [ext_resource type="Script" uid="uid://1fiuwkd14tpp" path="res://Scenes/levels/pause.gd" id="10_3ybw1"]
 [ext_resource type="PackedScene" uid="uid://i1hbivvfqq7o" path="res://Scenes/weapons/SwordPowerUp.tscn" id="11_lrgkq"]
 [ext_resource type="AudioStream" uid="uid://bgl7jbt75d7ba" path="res://assets/sfx/coin-recieved-230517.mp3" id="11_s1a2m"]
+[ext_resource type="PackedScene" uid="uid://ddwf3f71slnu3" path="res://Scenes/game_objects/QuestionBlock.tscn" id="12_0epxl"]
 [ext_resource type="Texture2D" uid="uid://b52uy3a5xwnp0" path="res://assets/game_elements/Cherries.png" id="12_su1cr"]
 [ext_resource type="Script" uid="uid://b3jqbu0mt24ki" path="res://Scenes/levels/ui.gd" id="12_uxirm"]
 [ext_resource type="Script" uid="uid://crqutdk0y0hv0" path="res://Scenes/levels/fall_area.gd" id="14_uxirm"]
 [ext_resource type="AudioStream" uid="uid://crjjx5nb63404" path="res://assets/bgm/2019-12-09_-_Retro_Forest_-_David_Fesliyan.mp3" id="15_qwlny"]
 [ext_resource type="Texture2D" uid="uid://ckmjxd36bbtx1" path="res://assets/game_elements/Inventory_box.png" id="16_ux382"]
-[ext_resource type="PackedScene" uid="uid://ce8acn2fk2pat" path="res://Scenes/weapons/pistol_powerup.tscn" id="17_mgeiv"]
 [ext_resource type="PackedScene" uid="uid://wamlf6u5gj47" path="res://Scenes/weapons/TomePowerUp.tscn" id="19_0epxl"]
+[ext_resource type="AudioStream" uid="uid://co37fl6wxf1wy" path="res://assets/sfx/powerup.mp3" id="20_q3fj8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
 texture = ExtResource("2_ysn8j")
@@ -580,7 +581,7 @@ tile_map_data = PackedByteArray("AADg/xIAAAABAAEAAADl//j/AAABAAEAAADl//n/AAABAAE
 tile_set = SubResource("TileSet_272bh")
 
 [node name="Player" parent="SceneObjects" instance=ExtResource("3_6ll4n")]
-position = Vector2(53, 142)
+position = Vector2(55, 477)
 
 [node name="Camera2D" type="Camera2D" parent="SceneObjects/Player"]
 position = Vector2(1, 2)
@@ -619,6 +620,9 @@ target_level = ExtResource("6_ysn8j")
 
 [node name="Enemies" type="Node" parent="SceneObjects"]
 
+[node name="MushroomEnemy4" parent="SceneObjects/Enemies" instance=ExtResource("9_bdlbp")]
+position = Vector2(861, 567)
+
 [node name="MushroomEnemy" parent="SceneObjects/Enemies" instance=ExtResource("9_bdlbp")]
 position = Vector2(929, 179)
 
@@ -628,15 +632,7 @@ position = Vector2(1961, 160)
 [node name="MushroomEnemy3" parent="SceneObjects/Enemies" instance=ExtResource("9_bdlbp")]
 position = Vector2(504, 326)
 
-[node name="MushroomEnemy" parent="SceneObjects" instance=ExtResource("9_bdlbp")]
-position = Vector2(861, 567)
-
 [node name="PowerUps" type="Node" parent="SceneObjects"]
-
-[node name="PistolPowerup" parent="SceneObjects/PowerUps" instance=ExtResource("17_mgeiv")]
-position = Vector2(202, 501)
-scale = Vector2(0.5, 0.5)
-collision_layer = 8
 
 [node name="SwordPowerUp" parent="SceneObjects/PowerUps" instance=ExtResource("11_lrgkq")]
 position = Vector2(324, 594)
@@ -646,6 +642,11 @@ collision_layer = 8
 [node name="TomePowerUp" parent="SceneObjects/PowerUps" instance=ExtResource("19_0epxl")]
 position = Vector2(344, 50)
 scale = Vector2(0.8, 0.8)
+
+[node name="QuestionBlocks" type="Node" parent="SceneObjects"]
+
+[node name="QuestionBlock" parent="SceneObjects/QuestionBlocks" instance=ExtResource("12_0epxl")]
+position = Vector2(61, 374)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -873,6 +874,18 @@ offset_bottom = 40.0
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="WhiteFlashRect" type="ColorRect" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="sfx_powerup" type="AudioStreamPlayer2D" parent="UI"]
+stream = ExtResource("20_q3fj8")
+volume_db = 24.0
 
 [node name="world boundary" type="Area2D" parent="."]
 position = Vector2(847, 764)

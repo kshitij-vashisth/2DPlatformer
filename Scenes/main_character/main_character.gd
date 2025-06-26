@@ -12,6 +12,11 @@ var current_weapon_index: int = GameManager.current_weapon_index  # 0 = gun, 1 =
 #========================================================
 
 #SFXloader================================================
+@onready var sfx_sword: AudioStreamPlayer2D = $sfx_sword
+@onready var sfx_destro: AudioStreamPlayer2D = $sfx_destro
+@onready var sfx_rect_hide: AudioStreamPlayer2D = $sfx_rect_hide
+@onready var sfx_rect_show: AudioStreamPlayer2D = $sfx_rect_show
+@onready var sfx_spell_read: AudioStreamPlayer2D = $sfx_spell_read
 @onready var sfx_powerup: AudioStreamPlayer2D = $sfx_powerup
 @onready var sfx_dash: AudioStreamPlayer2D = $sfx_dash
 @onready var sfx_jump: AudioStreamPlayer2D = $sfx_jump
@@ -19,7 +24,12 @@ var current_weapon_index: int = GameManager.current_weapon_index  # 0 = gun, 1 =
 @onready var sfx_shoot: AudioStreamPlayer2D = $sfx_shoot
 #=========================================================
 
+#WhiteFlashRect=================================================
+@onready var white_flash_rect: ColorRect = $"../../UI/WhiteFlashRect"
+#===============================================================
+
 #Booleans=======================================================
+var tome_using: bool = false
 var sword_striking: bool = false
 var is_dashing: bool = false
 var is_sliding: bool = false
@@ -45,7 +55,7 @@ var dash_timer: float = 0.0
 @onready var collision_shape_2d_normal: CollisionShape2D = $CollisionShape2DNormal
 @onready var collision_shape_2d_crouch: CollisionShape2D = $CollisionShape2DCrouch
 @onready var sword_cut: CollisionShape2D = $SwordCollider/SwordCut
-#===============================================================
+#========$TomeCollider/TomeShield=======================================================
 
 
 @onready var ui: CanvasLayer = %UI
@@ -86,6 +96,10 @@ func _on_animation_finished():
 		attack_animation_playing = false
 		if sword_striking:
 			sword_striking = false
+		if tome_using:
+			tome_using = false
+		
+
 
 func inventory_switcher() -> void:
 	var previous_index := current_weapon_index
@@ -124,7 +138,8 @@ func inventory_switcher() -> void:
 func bounce_jump() -> void:
 	bounced_this_frame = true          # remember we bounced
 	#jump_count -= 1
-	jump()         # launch upward
+	sfx_jump.play()
+	velocity.y = JUMP_VELOCITY
 
 func ammo_checker() -> void:
 	#GunAmmo=================================
@@ -132,7 +147,7 @@ func ammo_checker() -> void:
 		gun_ammo = GameManager.gun_ammo
 	
 	if GameManager.has_gun != has_gun:
-		has_gun = GameManager.has_gun	
+		has_gun = GameManager.has_gun    
 	
 	if gun_ammo == 0:
 		ui.gun_inactive()
@@ -144,7 +159,7 @@ func ammo_checker() -> void:
 		sword_strikes = GameManager.sword_strikes
 	
 	if GameManager.has_sword != has_sword:
-		has_sword = GameManager.has_sword	
+		has_sword = GameManager.has_sword    
 	
 	if sword_strikes == 0:
 		ui.sword_inactive()
@@ -156,7 +171,7 @@ func ammo_checker() -> void:
 		tome_spells = GameManager.tome_spells
 	
 	if GameManager.has_tome != has_tome:
-		has_tome = GameManager.has_tome	
+		has_tome = GameManager.has_tome    
 	
 	if tome_spells == 0:
 		ui.tome_inactive()
@@ -173,7 +188,7 @@ func shoot(direction, bsp) -> void:
 		return
 	else:
 		GameManager.gun_ammo -= 1
-		sfx_shoot.play()	
+		sfx_shoot.play()    
 		#print("shooting")
 		gun.show()
 		#sprite_2d.animation = "shooting"
@@ -201,14 +216,14 @@ func damage_sprite()->void:
 func jump() -> void:
 	if attack_animation_playing:
 		return  # Don’t override animations while attacking
-	is_jumping = true	
-	jump_count += 1
-	velocity.y = JUMP_VELOCITY
-	sfx_jump.play()
-	if jump_count==2:
-		spawn_particle()
-	if is_on_floor():
-		is_jumping = false
+	if is_jumping == true:
+		jump_count += 1
+		velocity.y = JUMP_VELOCITY
+		sfx_jump.play()
+		if jump_count==2:
+			spawn_particle()
+		if is_on_floor():
+			is_jumping = false
 		
 func dash():
 	if attack_animation_playing:
@@ -263,13 +278,19 @@ func spawn_dirt() -> void:
 	dust_node.queue_free()
 
 func _on_coin_collector_area_entered(area: Area2D) -> void:
+	if area.name == "EnemyArea":
+		#print("Enemy Detected")
+		var y_delta: float = area.position.y - position.y
+		var x_delta: float = position.x - area.position.x 
+		print(y_delta)
+		
 	if area.get_parent().name == "CollectibleNode":
 		#print("play")
-		sfx_coin_collect.play()	
+		sfx_coin_collect.play()    
 			
 	if area.get_parent().name == "PowerUps":
 		#print("play")
-		sfx_powerup.play()	
+		sfx_powerup.play()    
 	
 func wall_jump() -> void:
 	if attack_animation_playing:
@@ -313,8 +334,10 @@ func handle_movement(is_crouching:bool,delta:float)->void:
 		bounced_this_frame = false
 
 func handle_wall_slide(GRAVITY: Vector2, delta: float) -> void:
-	if is_on_wall() and not is_on_floor() and velocity.y > 0:
+	if is_on_wall() and not is_on_floor() and (velocity.y > 0 or velocity.y < 0):
+		
 		if !is_sliding:
+			is_jumping = false
 			spawn_dirt()
 			is_sliding = true
 		sprite_2d.play("wall_slide")
@@ -336,6 +359,7 @@ func handle_platform_pass()->void:
 func handle_normal_jump()->void:
 	# Handle normal jump
 	if Input.is_action_just_pressed("jump") and jump_count < 2 and (damaged == false):
+		is_jumping = true
 		jump()
 
 func is_on_ground() -> bool:
@@ -353,24 +377,65 @@ func sword_slash():
 	sword_striking = true
 	print("sword slashed")
 	attack_animation_playing = true
+	sfx_sword.play()
 	sprite_2d.play("sword_slash") 
 	GameManager.sword_strikes -= 1
 	
 	
 func tome_use():
 	if attack_animation_playing: return
+	tome_using = true
 	print("tome used")
 	attack_animation_playing = true
+	sfx_spell_read.play()
 	sprite_2d.play("tome_attack")
 	GameManager.tome_spells -= 1
+	await sprite_2d.animation_finished
+	
+	 # Then trigger the flash + enemy kill
+	await retro_triple_flash_then_kill()
+
+func retro_triple_flash_then_kill():
+	# Pause the game
+	get_tree().paused = true
+
+	# Allow UI to still run (very important!)
+	#white_flash_rect.pause_mode = Node.PAUSE_MODE_PROCESS
+
+	for i in 3:
+		sfx_rect_show.play()
+		white_flash_rect.show()
+		await get_tree().create_timer(0.3).timeout
+		sfx_rect_hide.play()
+		white_flash_rect.hide()
+		await get_tree().create_timer(0.3).timeout
+
+	# Kill all enemies
+	#kill_all_enemies()
+	kill_all_enemies_in_camera()
+
+	# Resume the game
+	get_tree().paused = false
+	sfx_destro.play()
+
+func kill_all_enemies()->void:
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		if enemy.is_visible_in_tree():
+			enemy.queue_free()
+			
+func kill_all_enemies_in_camera()->void:
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		# Assuming your enemy script has the 'is_on_screen' property
+		if enemy.has_method("queue_free_if_on_screen"): # Optional: defensive check
+			enemy.queue_free_if_on_screen()
 
 
 func _physics_process(delta: float) -> void:
 	#DebugWallSlide=================================================================================
 	if is_sliding:
-		print("Sliding on wall...")
+		#print("Sliding on wall...")
+		pass
 	#===============================================================================================
-	
 	
 	#CrouchColliderHandling=========================================================================
 	var is_crouching = Input.is_action_pressed("down") and is_on_floor()
@@ -378,8 +443,25 @@ func _physics_process(delta: float) -> void:
 	$CollisionShape2DCrouch.disabled = not is_crouching
 	#===============================================================================================
 	
+	#DebuggingDamage================================================================================
+	if damaged:
+		is_jumping = false
+		is_sliding = false
+		is_dashing = false
+		is_crouching = false
+		sword_striking = false
+		tome_using = false
+	#===============================================================================================
+	
 	#SwordSlashColliderHandling=====================================================================
 	sword_cut.disabled = not sword_striking
+	#===============================================================================================
+	
+	#TomeInvincibility==============================================================================
+	if tome_using:
+		sprite_2d.modulate.a = 0.3
+	else:
+		sprite_2d.modulate.a = 1.0
 	#===============================================================================================
 	
 	#Inventory Handling==============================================================================
@@ -387,15 +469,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("fire") and not damaged:
 		if current_weapon_index == 0 and has_gun:
 			shoot(last_direction, bullet_spawn_point)
-		elif current_weapon_index == 1 and has_sword:
+		elif current_weapon_index == 1 and has_sword and not is_sliding:
 			sword_slash()
-		elif current_weapon_index == 2 and has_tome:
+		elif current_weapon_index == 2 and has_tome and is_on_floor_only():
 			tome_use()
 	#=================================================================================================
 	
 	
 	# Stronger condition to exit wall slide
-	if is_on_floor() or not is_on_wall() or velocity.y < 0:
+	if is_on_floor_only() or velocity.y < 0 and not sword_striking:
 		is_sliding = false
 	
 	
@@ -431,7 +513,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			gun.position.x = abs(gun.position.x)   # Move to right side
 			
-		# player direction	
+		# player direction    
 		if direction:
 			velocity.x = direction * SPEED
 			# Start dash
@@ -462,7 +544,7 @@ func _physics_process(delta: float) -> void:
 	
 	if last_direction < 0:
 		bullet_spawn_point.position.x = -abs(bullet_spawn_point.position.x)
-	else: 	
+	else:     
 		bullet_spawn_point.position.x = abs(bullet_spawn_point.position.x)
 	
 	
@@ -470,6 +552,8 @@ func _physics_process(delta: float) -> void:
 		#shoot(last_direction, bullet_spawn_point)
 
 
+
 func _on_sword_collider_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		body.queue_free()
+		

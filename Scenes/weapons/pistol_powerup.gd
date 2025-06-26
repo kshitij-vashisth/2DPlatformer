@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var ui: CanvasLayer = %UI
+@onready var ui: CanvasLayer = $"../../../UI"
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name== "Player":
@@ -10,3 +10,4 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		ui.gun_picked()
 		queue_free()
+		

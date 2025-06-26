@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://ddwf3f71slnu3"]
+
+[ext_resource type="Script" uid="uid://5bvri5aws8nq" path="res://Scenes/game_objects/question_block.gd" id="1_1trd1"]
+[ext_resource type="Texture2D" uid="uid://bln5rqk5e7ihr" path="res://assets/game_elements/questionblock.png" id="2_c65i2"]
+[ext_resource type="Texture2D" uid="uid://cfke5kvyjxn62" path="res://assets/game_elements/NES - Super Mario Bros - Item and Brick Blocks.png" id="3_c65i2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oknkt"]
+size = Vector2(15, 0.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jabkx"]
+size = Vector2(15, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oknkt"]
+atlas = ExtResource("3_c65i2")
+region = Rect2(80, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jabkx"]
+atlas = ExtResource("3_c65i2")
+region = Rect2(96, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjl6r"]
+atlas = ExtResource("3_c65i2")
+region = Rect2(112, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nofle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oknkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jabkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjl6r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="QuestionBlock" type="Area2D"]
+scale = Vector2(4, 4)
+collision_layer = 14
+script = ExtResource("1_1trd1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 6.4375)
+shape = SubResource("RectangleShape2D_oknkt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_c65i2")
+hframes = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_jabkx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_nofle")
+autoplay = "default"
+frame_progress = 0.870788
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

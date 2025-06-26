@@ -1,8 +1,8 @@
 extends CanvasLayer  # or Control
-
+@onready var powerup_holder: Node = $"../SceneObjects/PowerUps"
 @onready var points_label: Label = %PointsLabel
 @export var hearts: Array[Node]
-
+@onready var sfx_powerup = $sfx_powerup
 var current_weapon_index: int = GameManager.current_weapon_index
 
 @export var gun_node: Array[Node]
@@ -17,21 +17,21 @@ func _ready() -> void:
 	update_ui()
 	current_weapon_index= GameManager.current_weapon_index
 
-func _update_inventory_icons() -> void:
-	if GameManager.has_gun:
-		gun_picked()
-	else:
-		gun_inactive()
-
-	if GameManager.has_sword:
-		sword_picked()
-	else:
-		sword_inactive()
-
-	if GameManager.has_tome:
-		tome_picked()
-	else:
-		tome_inactive()
+#func _update_inventory_icons() -> void:
+	#if GameManager.has_gun:
+		#gun_texture()
+	#else:
+		#gun_inactive()
+#
+	#if GameManager.has_sword:
+		#sword_picked()
+	#else:
+		#sword_inactive()
+#
+	#if GameManager.has_tome:
+		#tome_picked()
+	#else:
+		#tome_inactive()
 
 func _game_over() -> void:
 	get_tree().change_scene_to_file("res://Scenes/menu/game_over.tscn")
@@ -59,13 +59,17 @@ func update_hearts() -> void:
 			hearts[h].hide()
 
 func gun_picked() -> void:
+	sfx_powerup.play()
+	gun_texture()
+
+func gun_texture() -> void:
 	var new_texture: Texture2D = preload("res://assets/game_elements/pistol_inventory.png")
 	gun_ammo.show()
 	for gun in gun_node:
 		if gun is Sprite2D:
 			gun.texture = new_texture
 		elif gun is TextureRect:
-			gun.texture = new_texture
+			gun.texture = new_texture	
 
 func gun_inactive() -> void:
 	var new_texture: Texture2D = preload("res://assets/game_elements/Inventory_box.png")
@@ -112,11 +116,23 @@ func tome_inactive() -> void:
 		elif tome is TextureRect:
 			tome.texture = new_texture
 
+#SpawningMethods=======================================
+func spawn_gun(pos) -> void:
+	call_deferred("_deferred_spawn_gun", pos)
+	
+func _deferred_spawn_gun(pos) -> void:
+	var GunScene = preload("res://Scenes/weapons/pistol_powerup.tscn")
+	var gun = GunScene.instantiate()
+	gun.global_position = pos
+	powerup_holder.add_child(gun)
+	#get_tree().current_scene.add_child(gun)
+#======================================================
+
 func update_ui() -> void:
 	update_points()
 	update_hearts()
 	if GameManager.has_gun:
-		gun_picked()
+		gun_texture()
 	if GameManager.has_sword:
 		sword_picked()
 	if GameManager.has_tome:

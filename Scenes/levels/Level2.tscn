@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://nixo2c80gj7s"]
+[gd_scene load_steps=41 format=4 uid="uid://nixo2c80gj7s"]
 
 [ext_resource type="Texture2D" uid="uid://dg7t8xynj3wmp" path="res://assets/background/PineForestParallax/MorningLayer6.png" id="1_5ictq"]
 [ext_resource type="Texture2D" uid="uid://dijf7y23k6yul" path="res://assets/background/PineForestParallax/MorningLayer4.png" id="2_1ols8"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://b52uy3a5xwnp0" path="res://assets/game_elements/Cherries.png" id="13_kx2o3"]
 [ext_resource type="AudioStream" uid="uid://c4ikk2lcpa2qj" path="res://assets/bgm/2019-12-11_-_Retro_Platforming_-_David_Fesliyan.mp3" id="14_1ols8"]
 [ext_resource type="Texture2D" uid="uid://ckmjxd36bbtx1" path="res://assets/game_elements/Inventory_box.png" id="16_a8dr6"]
+[ext_resource type="AudioStream" uid="uid://co37fl6wxf1wy" path="res://assets/sfx/powerup.mp3" id="17_ubfcy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
 texture = ExtResource("2_6faey")
@@ -357,7 +358,7 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lxc8y"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ubfcy"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rltig"]
 
 [node name="Node" type="Node"]
 
@@ -437,6 +438,8 @@ position = Vector2(1843, 239)
 
 [node name="MushroomEnemy3" parent="SceneObjects/Enemies" instance=ExtResource("7_70df5")]
 position = Vector2(307, 431)
+
+[node name="PowerUps" type="Node" parent="SceneObjects"]
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -598,7 +601,7 @@ offset_top = 8.0
 offset_right = 20.0
 offset_bottom = 48.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ubfcy")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rltig")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Inventory"]
 layout_mode = 1
@@ -666,6 +669,18 @@ offset_bottom = 40.0
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="WhiteFlashRect" type="ColorRect" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="sfx_powerup" type="AudioStreamPlayer2D" parent="UI"]
+stream = ExtResource("17_ubfcy")
+volume_db = 24.0
 
 [connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/ResumeButton" to="UI/Pause" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/MainMenuButton" to="UI/Pause" method="_on_main_menu_button_pressed"]

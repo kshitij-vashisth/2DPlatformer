@@ -30,4 +30,8 @@ func _on_main_menu_button_pressed() -> void:
 	get_tree().paused = pause_status
 	GameManager.points = 0
 	GameManager.lives = 3
+	GameManager.gun_ammo = 0
+	GameManager.sword_strikes = 0
+	GameManager.tome_spells = 0
+	GameManager.current_weapon_index = 0
 	get_tree().change_scene_to_file("res://Scenes/menu/main_menu.tscn")

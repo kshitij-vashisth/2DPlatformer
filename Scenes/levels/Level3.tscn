@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://dqfi7lfkoyiqt"]
+[gd_scene load_steps=52 format=4 uid="uid://dqfi7lfkoyiqt"]
 
 [ext_resource type="Texture2D" uid="uid://dg7t8xynj3wmp" path="res://assets/background/PineForestParallax/MorningLayer6.png" id="1_c2svo"]
 [ext_resource type="Texture2D" uid="uid://dijf7y23k6yul" path="res://assets/background/PineForestParallax/MorningLayer4.png" id="2_b05me"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b52uy3a5xwnp0" path="res://assets/game_elements/Cherries.png" id="15_a8ktn"]
 [ext_resource type="AudioStream" uid="uid://c02eqceqv4tuk" path="res://assets/bgm/2020-04-24_-_Arcade_Kid_-_FesliyanStudios.com_-_David_Renda.mp3" id="16_b05me"]
 [ext_resource type="Texture2D" uid="uid://ckmjxd36bbtx1" path="res://assets/game_elements/Inventory_box.png" id="18_x2a3a"]
+[ext_resource type="AudioStream" uid="uid://co37fl6wxf1wy" path="res://assets/sfx/powerup.mp3" id="19_rqdlv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
 texture = ExtResource("2_jnewo")
@@ -363,7 +364,7 @@ region = Rect2(480, 0, 32, 32)
 atlas = ExtResource("15_a8ktn")
 region = Rect2(512, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_dh0id"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_rqdlv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -422,9 +423,9 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4vmnb"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wavpn"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rqdlv"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dh0id"]
 
 [node name="Node" type="Node"]
 
@@ -550,7 +551,7 @@ metadata/_edit_use_anchors_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/Panel"]
 position = Vector2(20, 23)
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_dh0id")
+sprite_frames = SubResource("SpriteFrames_rqdlv")
 autoplay = "default"
 
 [node name="Hearts" type="Panel" parent="UI"]
@@ -562,7 +563,7 @@ offset_top = 11.0
 offset_right = -11.0
 offset_bottom = 65.0
 grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_4vmnb")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wavpn")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Hearts"]
 layout_mode = 1
@@ -666,7 +667,7 @@ offset_top = 8.0
 offset_right = 20.0
 offset_bottom = 48.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_rqdlv")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dh0id")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Inventory"]
 layout_mode = 1
@@ -734,6 +735,18 @@ offset_bottom = 40.0
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="WhiteFlashRect" type="ColorRect" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="sfx_powerup" type="AudioStreamPlayer2D" parent="UI"]
+stream = ExtResource("19_rqdlv")
+volume_db = 24.0
 
 [connection signal="body_entered" from="SceneObjects/world boundary" to="SceneObjects/world boundary" method="_on_body_entered"]
 [connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/ResumeButton" to="UI/Pause" method="_on_resume_button_pressed"]

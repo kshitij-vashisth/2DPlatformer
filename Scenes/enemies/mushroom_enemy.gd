@@ -1,5 +1,28 @@
 extends CharacterBody2D
 
+#OnScreenLogic==================================================================
+var is_on_screen:bool = false
+func _ready():
+	add_to_group("enemies")
+	var visibility_notifier = $VisibleOnScreenNotifier2D
+	if visibility_notifier:
+		visibility_notifier.screen_entered.connect(_on_VisibilityNotifier2D_screen_entered)
+		visibility_notifier.screen_exited.connect(_on_VisibilityNotifier2D_screen_exited)
+
+func _on_VisibilityNotifier2D_screen_entered():
+	is_on_screen = true
+
+func _on_VisibilityNotifier2D_screen_exited():
+	is_on_screen = false
+
+func queue_free_if_on_screen():
+	if is_on_screen:
+		queue_free()
+#===============================================================================
+
+
+
+
 @onready var sfx_hurt: AudioStreamPlayer2D = $sfx_hurt
 
 @onready var ui: CanvasLayer = %UI
@@ -39,12 +62,6 @@ func platform_edge()->void:
 func wall_checker()->void:
 	if wall_check.is_colliding():
 		direction = -direction
-		
-
-	
-
-func _ready() -> void:
-	add_to_group("enemies")
 
 func _physics_process(delta: float) -> void:
 	add_gravity(delta)
@@ -72,7 +89,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 		
 		#print(y_delta)
-		if y_delta < 20:
+		if y_delta < 20 and body.tome_using == false:
 			#print("player health decrease")
 			sfx_hurt.play()
 			ui.decrease_health()

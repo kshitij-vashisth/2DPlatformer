@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dsp5chgt3px5w"]
+[gd_scene load_steps=85 format=3 uid="uid://dsp5chgt3px5w"]
 
 [ext_resource type="Texture2D" uid="uid://oxroryweqrue" path="res://assets/character/Jump (32x32).png" id="1_0eyao"]
 [ext_resource type="Script" uid="uid://d301x2p4fsa36" path="res://Scenes/main_character/main_character.gd" id="1_11o2n"]
@@ -19,6 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://bkbg2a8fwrsq1" path="res://assets/character/Tome Attack (32x32).png" id="13_gfte0"]
 [ext_resource type="AudioStream" uid="uid://cih8qerr6m1yg" path="res://assets/sfx/whoosh2.mp3" id="13_ux32v"]
 [ext_resource type="AudioStream" uid="uid://co37fl6wxf1wy" path="res://assets/sfx/powerup.mp3" id="19_2lp80"]
+[ext_resource type="AudioStream" uid="uid://bt3rqmt86badr" path="res://assets/sfx/kage_spell.mp3" id="20_vt5x2"]
+[ext_resource type="AudioStream" uid="uid://cv8smuij8acma" path="res://assets/sfx/rect_show.wav" id="21_vt5x2"]
+[ext_resource type="AudioStream" uid="uid://clbx2x6xh38rr" path="res://assets/sfx/rect_hide.wav" id="22_00jkg"]
+[ext_resource type="AudioStream" uid="uid://bhr20lm27w6lj" path="res://assets/sfx/tome_used_end.mp3" id="23_00jkg"]
+[ext_resource type="AudioStream" uid="uid://3mk4gb54aswf" path="res://assets/sfx/sword_strike.mp3" id="24_23fd8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwx5a"]
 atlas = ExtResource("3_cqtah")
@@ -455,6 +460,114 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pxns2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkfhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncqxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajva7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn37h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5solt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1yu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8lp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffix6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujbp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7hst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxns2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkfhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncqxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajva7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn37h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5solt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1yu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8lp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffix6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujbp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7hst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxns2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkfhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncqxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkfhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncqxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajva7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn37h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5solt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1yu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8lp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffix6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujbp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7hst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxns2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkfhn")
 }],
 "loop": false,
 "name": &"tome_attack",
@@ -476,7 +589,7 @@ size = Vector2(57, 67)
 size = Vector2(69, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2t2n"]
-size = Vector2(60, 36)
+size = Vector2(69, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lp80"]
 size = Vector2(24, 103)
@@ -500,9 +613,9 @@ texture_filter = 1
 position = Vector2(-1, 2)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5pc05")
-animation = &"sword_slash"
+animation = &"tome_attack"
 autoplay = "default"
-frame = 4
+frame = 34
 frame_progress = 1.0
 
 [node name="CollisionShape2DNormal" type="CollisionShape2D" parent="."]
@@ -534,7 +647,7 @@ collision_layer = 2
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coin_collector"]
-position = Vector2(-1, 28)
+position = Vector2(-2.5, 28)
 shape = SubResource("RectangleShape2D_r2t2n")
 
 [node name="sfx_shoot" type="AudioStreamPlayer2D" parent="."]
@@ -561,9 +674,35 @@ volume_db = -16.0
 
 [node name="SwordCollider" type="Area2D" parent="."]
 position = Vector2(37, 5)
+collision_layer = 8
+collision_mask = 8
 
 [node name="SwordCut" type="CollisionShape2D" parent="SwordCollider"]
 shape = SubResource("RectangleShape2D_2lp80")
+
+[node name="sfx_spell_read" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("20_vt5x2")
+volume_db = 24.0
+
+[node name="sfx_rect_show" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("21_vt5x2")
+volume_db = 24.0
+
+[node name="sfx_rect_hide" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("22_00jkg")
+volume_db = 24.0
+
+[node name="sfx_destro" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("23_00jkg")
+volume_db = 24.0
+
+[node name="sfx_sword" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_23fd8")
+volume_db = 24.0
 
 [connection signal="area_entered" from="coin_collector" to="." method="_on_coin_collector_area_entered"]
 [connection signal="body_entered" from="SwordCollider" to="." method="_on_sword_collider_body_entered"]
