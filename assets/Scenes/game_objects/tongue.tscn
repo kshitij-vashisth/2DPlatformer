@@ -1,0 +1,56 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3qa17md8xw6y"]
+
+[ext_resource type="Texture2D" uid="uid://bt2hvrhlskc6f" path="res://assets/Art/character/tongue/tile026.png" id="1_flela"]
+[ext_resource type="Texture2D" uid="uid://cgi3aaqik73c1" path="res://assets/Art/character/tongue/tile027.png" id="2_0r7tl"]
+[ext_resource type="Texture2D" uid="uid://bvdypn7p1646i" path="res://assets/Art/character/tongue/tile028.png" id="3_8usww"]
+[ext_resource type="Texture2D" uid="uid://bl6ncruw2212s" path="res://assets/Art/character/tongue/tile029.png" id="4_dykk2"]
+[ext_resource type="Texture2D" uid="uid://buysf282gyus1" path="res://assets/Art/character/tongue/tile030.png" id="5_x4end"]
+[ext_resource type="Texture2D" uid="uid://dfkoc37n1g6gd" path="res://assets/Art/character/tongue/tile031.png" id="6_kpynx"]
+[ext_resource type="Texture2D" uid="uid://bjsigr8min3ry" path="res://assets/Art/character/tongue/tile032.png" id="7_yb5op"]
+[ext_resource type="Texture2D" uid="uid://d04vnm63jm75q" path="res://assets/Art/character/tongue/tile033.png" id="8_ap2c5"]
+[ext_resource type="Texture2D" uid="uid://bd0dg2scu58y0" path="res://assets/Art/character/tongue/tile034.png" id="9_ld4h8"]
+[ext_resource type="Texture2D" uid="uid://dp0tu7p6ef82w" path="res://assets/Art/character/tongue/tile035.png" id="10_m6h1e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7wsf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_flela")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0r7tl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8usww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dykk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x4end")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kpynx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yb5op")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ap2c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ld4h8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_m6h1e")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="Tongue" type="AnimatedSprite2D"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_e7wsf")
+frame = 9
+frame_progress = 1.0
