@@ -1,0 +1,6 @@
+* add control of reticle to gamepad
+* add options to main menu and pause menu
+* add cutscenes
+* add more types of enemies
+* 
+
