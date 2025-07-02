@@ -280,14 +280,14 @@ func shoot(direction, bsp) -> void:
 
 
 func damage_sprite(GRAVITY: Vector2, delta: float)->void:
-	damage_state_setter()
+	#damage_state_setter()
 	if check_lives > GameManager.lives:
 		damaged = true
 		if damaged:
 			print("damaged")
-			sprite_2d.play("damaged") 
+			sprite_2d.play("damaged")
+			await sprite_2d.animation_finished 
 		check_lives = GameManager.lives
-		await sprite_2d.animation_finished
 		damaged = false
 	#print(GameManager.lives)
 	#print(check_lives)
@@ -525,6 +525,7 @@ func kill_all_enemies_in_camera()->void:
 			enemy.queue_free_if_on_screen()
 
 func _physics_process(delta: float) -> void:
+	damage_state_setter()
 	var GRAVITY: Vector2 = get_gravity()
 	if is_sliding or is_on_wall():
 		sword_striking = false
