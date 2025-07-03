@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.4", "Mobile")
 [autoload]
 
 GameManager="*res://assets/Scripts/game_manager.gd"
+ANIMA="*res://addons/anima/core/constants.gd"
 
 [display]
 
@@ -24,6 +25,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://drhfnr8k3678r"
 mouse_cursor/custom_image_hotspot=Vector2(16, 16)
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/anima/plugin.cfg")
 
 [global_group]
 

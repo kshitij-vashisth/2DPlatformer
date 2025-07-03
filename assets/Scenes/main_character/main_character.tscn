@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://dsp5chgt3px5w"]
+[gd_scene load_steps=95 format=3 uid="uid://dsp5chgt3px5w"]
 
 [ext_resource type="Texture2D" uid="uid://oxroryweqrue" path="res://assets/Art/character/Jump (32x32).png" id="1_0eyao"]
 [ext_resource type="Script" uid="uid://d301x2p4fsa36" path="res://assets/Scripts/main_character.gd" id="1_11o2n"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bu77275hsqkk2" path="res://assets/Art/character/Sword-Attack (32X32).png" id="12_xexkq"]
 [ext_resource type="Texture2D" uid="uid://bkbg2a8fwrsq1" path="res://assets/Art/character/Tome Attack (32x32).png" id="13_gfte0"]
 [ext_resource type="AudioStream" uid="uid://cih8qerr6m1yg" path="res://assets/sfx/whoosh2.mp3" id="13_ux32v"]
+[ext_resource type="Texture2D" uid="uid://cdwdjeabwt4w4" path="res://assets/Art/character/Appearing (96x96).png" id="15_h3q8r"]
 [ext_resource type="AudioStream" uid="uid://bt3rqmt86badr" path="res://assets/sfx/kage_spell.mp3" id="20_vt5x2"]
 [ext_resource type="AudioStream" uid="uid://cv8smuij8acma" path="res://assets/sfx/rect_show.wav" id="21_vt5x2"]
 [ext_resource type="AudioStream" uid="uid://clbx2x6xh38rr" path="res://assets/sfx/rect_hide.wav" id="22_00jkg"]
@@ -25,6 +26,7 @@
 [ext_resource type="Script" uid="uid://bevvt68hyqpxx" path="res://assets/Scripts/grapple_controller.gd" id="24_3t8sv"]
 [ext_resource type="AudioStream" uid="uid://3mk4gb54aswf" path="res://assets/sfx/sword_strike.mp3" id="24_23fd8"]
 [ext_resource type="AudioStream" uid="uid://16ercn4c4xtm" path="res://assets/sfx/tongue_launch.mp3" id="25_0tmua"]
+[ext_resource type="AudioStream" uid="uid://cvs85fyux1oub" path="res://assets/sfx/warp-in.wav" id="27_vpvvg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwx5a"]
 atlas = ExtResource("3_cqtah")
@@ -245,6 +247,34 @@ region = Rect2(320, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vt5x2"]
 atlas = ExtResource("11_vxbvk")
 region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpvvg"]
+atlas = ExtResource("15_h3q8r")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4xbv"]
+atlas = ExtResource("15_h3q8r")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80i45"]
+atlas = ExtResource("15_h3q8r")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi1oa"]
+atlas = ExtResource("15_h3q8r")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fx78"]
+atlas = ExtResource("15_h3q8r")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chct1"]
+atlas = ExtResource("15_h3q8r")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ismhe"]
+atlas = ExtResource("15_h3q8r")
+region = Rect2(576, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5pc05"]
 animations = [{
@@ -581,6 +611,32 @@ animations = [{
 "loop": true,
 "name": &"wall_slide",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpvvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4xbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80i45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi1oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fx78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chct1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ismhe")
+}],
+"loop": false,
+"name": &"warp_in",
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11o2n"]
@@ -615,6 +671,7 @@ texture_filter = 1
 position = Vector2(-1, 2)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5pc05")
+animation = &"warp_in"
 autoplay = "default"
 
 [node name="CollisionShape2DNormal" type="CollisionShape2D" parent="."]
@@ -711,6 +768,10 @@ antialiased = true
 [node name="sfx_tongue_launch" type="AudioStreamPlayer2D" parent="GrappleController"]
 stream = ExtResource("25_0tmua")
 volume_db = -8.0
+
+[node name="sfx_warp_in" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_vpvvg")
+volume_db = 6.171
 
 [connection signal="area_entered" from="coin_collector" to="." method="_on_coin_collector_area_entered"]
 [connection signal="body_entered" from="SwordCollider" to="." method="_on_sword_collider_body_entered"]

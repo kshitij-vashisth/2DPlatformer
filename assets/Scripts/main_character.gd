@@ -14,6 +14,7 @@ var current_weapon_index: int = GameManager.current_weapon_index  # 0 = gun, 1 =
 
 
 #SFXloader================================================
+@onready var sfx_warp_in: AudioStreamPlayer2D = $sfx_warp_in
 @onready var sfx_sword: AudioStreamPlayer2D = $sfx_sword
 @onready var sfx_destro: AudioStreamPlayer2D = $sfx_destro
 @onready var sfx_rect_hide: AudioStreamPlayer2D = $sfx_rect_hide
@@ -162,6 +163,8 @@ var position_sword
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 func _ready()->void:
+	sprite_2d.play("warp_in")
+	sfx_warp_in.play()
 	position_sword = abs($SwordCollider.position.x)
 	check_lives = GameManager.lives
 	gun.hide()
@@ -286,7 +289,7 @@ func damage_sprite(GRAVITY: Vector2, delta: float)->void:
 		if damaged:
 			print("damaged")
 			sprite_2d.play("damaged")
-			await sprite_2d.animation_finished 
+			#await sprite_2d.animation_finished 
 		check_lives = GameManager.lives
 		damaged = false
 	#print(GameManager.lives)

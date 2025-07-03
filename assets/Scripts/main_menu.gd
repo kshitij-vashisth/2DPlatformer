@@ -9,7 +9,7 @@ func load_level(level_name: String) -> void:
 	get_tree().change_scene_to_file(path)
 
 func _on_level_1_pressed() -> void:
-	load_level("Level1")
+	get_tree().change_scene_to_file("res://assets/Scenes/cutscenes/intro-part-1.tscn")
 
 func _on_level_3_pressed() -> void:
 	load_level("Level3")

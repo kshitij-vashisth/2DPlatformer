@@ -1,0 +1,415 @@
+[gd_scene load_steps=21 format=4 uid="uid://dr0pvu535370q"]
+
+[ext_resource type="Script" uid="uid://c0vbodpe0arpd" path="res://assets/Scripts/intro_animation_controller.gd" id="1_ygoj1"]
+[ext_resource type="PackedScene" uid="uid://c6aft1wn24r20" path="res://assets/Scenes/cutscenes/intro-part-2.tscn" id="2_fndg2"]
+[ext_resource type="Texture2D" uid="uid://cfkxlxjhoqcam" path="res://assets/Art/dave/dave_moving.png" id="2_ftqwb"]
+[ext_resource type="Texture2D" uid="uid://8e5sxu6ckjeo" path="res://assets/Art/terrain/Terrain1 (16x16).png" id="3_fndg2"]
+[ext_resource type="Script" uid="uid://oknk5rn6qlo2" path="res://assets/Scripts/panel.gd" id="4_tcjyi"]
+[ext_resource type="Texture2D" uid="uid://d1t4bupxgmbvt" path="res://assets/Art/game_elements/dialog_box/tick-yes.png" id="5_6iw6v"]
+[ext_resource type="AudioStream" uid="uid://ck7nfm0p8xim3" path="res://assets/sfx/walk_dave.mp3" id="6_uksdk"]
+
+[sub_resource type="Animation" id="Animation_13or8"]
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dave:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 407), Vector2(1080, 407)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dave/Camera2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.86667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"get_target_position"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_f5jo3"]
+resource_name = "intro"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dave:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 407), Vector2(1080, 407)]
+}
+
+[sub_resource type="Animation" id="Animation_otiy7"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dave:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1080, 407), Vector2(1120, 407)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_otiy7"]
+_data = {
+&"RESET": SubResource("Animation_13or8"),
+&"intro": SubResource("Animation_f5jo3"),
+&"walk": SubResource("Animation_otiy7")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4goc"]
+atlas = ExtResource("2_ftqwb")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tw47h"]
+atlas = ExtResource("2_ftqwb")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prs3m"]
+atlas = ExtResource("2_ftqwb")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkn6a"]
+atlas = ExtResource("2_ftqwb")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqg7r"]
+atlas = ExtResource("2_ftqwb")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cuxyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4goc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tw47h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prs3m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkn6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqg7r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4goc")
+}],
+"loop": true,
+"name": &"stopped",
+"speed": 5.0
+}]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0medi"]
+texture = ExtResource("3_fndg2")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+11:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+5:3/0 = 0
+11:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+20:4/0 = 0
+21:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+20:5/0 = 0
+21:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+19:6/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+20:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+20:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+18:10/0 = 0
+19:10/0 = 0
+20:10/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yxlh4"]
+physics_layer_0/collision_layer = 6
+physics_layer_0/collision_mask = 9
+sources/3 = SubResource("TileSetAtlasSource_0medi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5jo3"]
+bg_color = Color(0.00784314, 0.121569, 0.337255, 0.572549)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Intro" type="Node"]
+
+[node name="IntroAnimationController" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_otiy7")
+}
+script = ExtResource("1_ygoj1")
+target_level = ExtResource("2_fndg2")
+
+[node name="Dave" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, 407)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_cuxyn")
+
+[node name="Camera2D" type="Camera2D" parent="Dave"]
+position = Vector2(-88, 0)
+position_smoothing_enabled = true
+position_smoothing_speed = 1.5
+
+[node name="Tilemap" type="TileMapLayer" parent="."]
+texture_filter = 1
+use_parent_material = true
+position = Vector2(0, 1)
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAD9/wYAAwAFAAMAAAD+/wYAAwAFAAMAAAD//wYAAwAFAAMAAAAAAAYAAwAFAAMAAAABAAYAAwAFAAMAAAACAAYAAwAFAAMAAAADAAYAAwAFAAMAAAAEAAYAAwAFAAMAAAAFAAYAAwAFAAMAAAAGAAYAAwAFAAMAAAAHAAYAAwAFAAMAAAAIAAYAAwAFAAMAAAAJAAYAAwAFAAMAAAAKAAYAAwAFAAMAAAALAAYAAwAFAAMAAAAMAAYAAwAFAAMAAAANAAYAAwAFAAMAAAAOAAYAAwAFAAMAAAAPAAYAAwAFAAMAAAAQAAYAAwAFAAMAAAARAAYAAwAFAAMAAAASAAYAAwAFAAMAAAATAAYAAwAFAAMAAAAUAAYAAwAFAAMAAAAVAAYAAwAFAAMAAAAWAAYAAwAFAAMAAAAXAAYAAwAFAAMAAAD9/wkAAwAFAAMAAAD+/wkAAwAFAAMAAAD//wkAAwAFAAMAAAAAAAkAAwAFAAMAAAABAAkAAwAFAAMAAAACAAkAAwAFAAMAAAADAAkAAwAFAAMAAAAEAAkAAwAFAAMAAAAFAAkAAwAFAAMAAAAGAAkAAwAFAAMAAAAHAAkAAwAFAAMAAAAIAAkAAwAFAAMAAAAJAAkAAwAFAAMAAAAKAAkAAwAFAAMAAAALAAkAAwAFAAMAAAAMAAkAAwAFAAMAAAANAAkAAwAFAAMAAAAOAAkAAwAFAAMAAAAPAAkAAwAFAAMAAAAQAAkAAwAFAAMAAAARAAkAAwAFAAMAAAASAAkAAwAFAAMAAAATAAkAAwAFAAMAAAAUAAkAAwAFAAMAAAAVAAkAAwAFAAMAAAAWAAkAAwAFAAMAAAAXAAkAAwAFAAMAAAAXAAgAAwALAAIAAADz/wYAAwAFAAMAAAD0/wYAAwAFAAMAAAD1/wYAAwAFAAMAAAD2/wYAAwAFAAMAAAD3/wYAAwAFAAMAAAD4/wYAAwAFAAMAAAD5/wYAAwAFAAMAAAD6/wYAAwAFAAMAAAD7/wYAAwAFAAMAAAD8/wYAAwAFAAMAAADp/wYAAwAFAAMAAADq/wYAAwAFAAMAAADr/wYAAwAFAAMAAADs/wYAAwAFAAMAAADt/wYAAwAFAAMAAADu/wYAAwAFAAMAAADv/wYAAwAFAAMAAADw/wYAAwAFAAMAAADx/wYAAwAFAAMAAADy/wYAAwAFAAMAAADo/wkAAwAFAAMAAADp/wkAAwAFAAMAAADq/wkAAwAFAAMAAADr/wkAAwAFAAMAAADs/wkAAwAFAAMAAADt/wkAAwAFAAMAAADu/wkAAwAFAAMAAADv/wkAAwAFAAMAAADw/wkAAwAFAAMAAADx/wkAAwAFAAMAAADy/wkAAwAFAAMAAADz/wkAAwAFAAMAAAD0/wkAAwAFAAMAAAD1/wkAAwAFAAMAAAD2/wkAAwAFAAMAAAD3/wkAAwAFAAMAAAD4/wkAAwAFAAMAAAD5/wkAAwAFAAMAAAD6/wkAAwAFAAMAAAD7/wkAAwAFAAMAAAD8/wkAAwAFAAMAAAA=")
+tile_set = SubResource("TileSet_yxlh4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -540.0
+offset_right = 540.0
+offset_bottom = 195.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f5jo3")
+script = ExtResource("4_tcjyi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Panel/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "In his world, Dave has just won the tournament and been declared \"Dangerous Dave\". He travels to different \"Warp Zones\" in search of a new way of life."
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 147.5
+offset_right = 1056.0
+offset_bottom = 187.5
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("5_6iw6v")
+alignment = 2
+
+[node name="PanelChangeScene" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -540.0
+offset_right = 540.0
+offset_bottom = 195.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f5jo3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelChangeScene"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="OneDay" type="RichTextLabel" parent="CanvasLayer/PanelChangeScene/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "Until one day...."
+fit_content = true
+horizontal_alignment = 1
+
+[node name="ChangeScene" type="Button" parent="CanvasLayer/PanelChangeScene"]
+layout_mode = 0
+offset_left = 1016.0
+offset_top = 147.5
+offset_right = 1056.0
+offset_bottom = 187.5
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 30
+icon = ExtResource("5_6iw6v")
+alignment = 2
+
+[node name="dave_walk_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_uksdk")
+volume_db = -12.0
+autoplay = true
+parameters/looping = true
+
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="IntroAnimationController" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="CanvasLayer/Panel" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelChangeScene/ChangeScene" to="IntroAnimationController" method="_on_change_scene_pressed"]

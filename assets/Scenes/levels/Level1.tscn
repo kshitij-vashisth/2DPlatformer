@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://brssbc340rug1" path="res://assets/Scenes/game_objects/QuestionBlock_Sword.tscn" id="23_e7kro"]
 [ext_resource type="PackedScene" uid="uid://ctbrsn4y4v4pt" path="res://assets/Scenes/game_objects/QuestionBlock_Tome.tscn" id="24_kb3hy"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e7kro"]
 texture = ExtResource("2_ysn8j")
 0:0/0 = 0
 1:0/0 = 0
@@ -237,7 +237,7 @@ texture = ExtResource("2_ysn8j")
 [sub_resource type="TileSet" id="TileSet_272bh"]
 physics_layer_0/collision_layer = 6
 physics_layer_0/collision_mask = 9
-sources/0 = SubResource("TileSetAtlasSource_7mycd")
+sources/0 = SubResource("TileSetAtlasSource_e7kro")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1a2m"]
 
@@ -582,7 +582,7 @@ tile_map_data = PackedByteArray("AADg/xIAAAABAAEAAADl//j/AAABAAEAAADl//n/AAABAAE
 tile_set = SubResource("TileSet_272bh")
 
 [node name="Player" parent="SceneObjects" instance=ExtResource("3_6ll4n")]
-position = Vector2(55, 477)
+position = Vector2(55, 337)
 
 [node name="Camera2D" type="Camera2D" parent="SceneObjects/Player"]
 position = Vector2(1, 2)
