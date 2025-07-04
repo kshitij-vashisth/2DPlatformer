@@ -13,4 +13,5 @@
 * add special death animation
 * add gamepad vibrations
 * add warp out on trophy touch
+* add special teleportation within levels, to other levels
 
