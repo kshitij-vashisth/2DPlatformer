@@ -5,6 +5,7 @@
 #====================================================================
 
 * add more levels
+* modify lives system
 * change points system to have points instead of cherries
 * add more types of enemies
 * add settings option to menu and pause menu to control sound levels, texture quality
