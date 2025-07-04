@@ -3,11 +3,11 @@
 * fixed crouch collider ----- done
 * add an interface screen that comes before the first level and between levels and when you fall ----- done
 * change points system to have points instead of cherries --- done
+* add warp out on trophy touch ---- done
 #====================================================================
 
 #ImmediateToDos============================================================================================
 * modify lives system
-* add warp out on trophy touch
 * add special death animation
 * add screen shake on damage
 
