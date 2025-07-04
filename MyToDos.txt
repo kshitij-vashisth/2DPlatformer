@@ -1,10 +1,10 @@
 * add control of reticle to gamepad ---- done
 * add cutscenes ----- done
 * fixed crouch collider ----- done
+* add an interface screen that comes before the first level and between levels and when you fall ----- done
 #====================================================================
 
 * add more levels
-* add an interface screen that comes before the first level and between levels and when you fall
 * change points system to have points instead of cherries
 * add more types of enemies
 * add settings option to menu and pause menu to control sound levels, texture quality

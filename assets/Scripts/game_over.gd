@@ -11,6 +11,7 @@ func _ready() -> void:
 	GameManager.sword_strikes = 0
 	GameManager.tome_spells = 0
 	GameManager.current_weapon_index = 0
+	GameManager.level_index = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

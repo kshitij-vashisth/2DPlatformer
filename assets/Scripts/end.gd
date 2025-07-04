@@ -7,6 +7,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		GameManager.level_index += 1
 		#await get_tree().create_timer(1).timeout
 		call_deferred("_change_scene")
 

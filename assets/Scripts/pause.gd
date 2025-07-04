@@ -34,4 +34,5 @@ func _on_main_menu_button_pressed() -> void:
 	GameManager.sword_strikes = 0
 	GameManager.tome_spells = 0
 	GameManager.current_weapon_index = 0
+	GameManager.level_index = 0
 	get_tree().change_scene_to_file("res://assets/Scenes/menu/main_menu.tscn")

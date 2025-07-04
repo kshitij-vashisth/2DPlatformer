@@ -1,0 +1,231 @@
+[gd_scene load_steps=24 format=3 uid="uid://ciy7f4sonp547"]
+
+[ext_resource type="Script" uid="uid://mxyyi2gk85x5" path="res://assets/Scripts/level_transition_screen.gd" id="1_ngbnl"]
+[ext_resource type="Texture2D" uid="uid://cdjc5nm8atfci" path="res://assets/Art/character/Fall (32x32).png" id="2_03ntr"]
+[ext_resource type="Texture2D" uid="uid://b52uy3a5xwnp0" path="res://assets/Art/game_elements/Cherries.png" id="3_lbi0n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_03ntr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h35wb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqdlv"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wavpn"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrgkq"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0epxl"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3fj8"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djss1"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dov1o"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chi5k"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i21rv"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2bwf"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmtwc"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ika7k"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu7h1"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44wuu"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2agux"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr3qf"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ew4kb"]
+atlas = ExtResource("3_lbi0n")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lktej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqdlv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wavpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrgkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0epxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3fj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djss1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dov1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chi5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i21rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2bwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmtwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ika7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu7h1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44wuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2agux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr3qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ew4kb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[node name="LevelTransitionScreen" type="Node"]
+script = ExtResource("1_ngbnl")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="WorldInformation" type="Panel" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_03ntr")
+
+[node name="World" type="RichTextLabel" parent="UI/WorldInformation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -382.0
+offset_right = 300.0
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "World 0-0"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
+texture_filter = 1
+position = Vector2(513, 330)
+scale = Vector2(3, 3)
+texture = ExtResource("2_03ntr")
+
+[node name="Cross" type="RichTextLabel" parent="UI"]
+offset_left = 573.0
+offset_top = 321.0
+offset_right = 609.0
+offset_bottom = 365.0
+theme_override_font_sizes/normal_font_size = 30
+text = "X"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lives" type="RichTextLabel" parent="UI"]
+offset_left = 632.0
+offset_top = 316.0
+offset_right = 668.0
+offset_bottom = 367.0
+theme_override_font_sizes/normal_font_size = 50
+text = "0
+"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointsPanel" type="Panel" parent="UI"]
+offset_left = 10.0
+offset_top = 13.0
+offset_right = 153.0
+offset_bottom = 67.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h35wb")
+metadata/_edit_use_anchors_ = true
+
+[node name="PointsLabel" type="Label" parent="UI/PointsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/PointsPanel"]
+texture_filter = 1
+position = Vector2(20, 23)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_lktej")
+autoplay = "default"
