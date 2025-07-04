@@ -1,8 +1,8 @@
 extends Node
 
-var points:int = 0
-var lives:int = 3
-
+var points: int = 0
+var lives: int = 3
+var cherries: int = 0
 #inventory===========================================
 var has_gun: bool = false
 var has_sword: bool = false
@@ -26,7 +26,13 @@ var level_changer_list: Array = [
 	"Level_1_1",
 ]
 #======================================================
-
+func check_zero_add_zero() -> String:
+	var num_zeros: int = 7-len(str(points))
+	var final_points: String = ""
+	for i in range(num_zeros):
+		final_points += str(0)
+	final_points += str(GameManager.points)
+	return final_points  
 
 
 
@@ -38,3 +44,13 @@ func spawn_gun(pos) -> void:
 	get_tree().current_scene.add_child(gun)
 	#get_tree().root.add_child(gun)
 #======================================================
+
+func reset_game() -> void:
+	cherries = 0
+	points = 0
+	lives = 3
+	gun_ammo = 0
+	sword_strikes = 0
+	tome_spells = 0
+	current_weapon_index = 0
+	level_index = 0

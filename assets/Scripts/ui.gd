@@ -1,6 +1,7 @@
 extends CanvasLayer  # or Control
 @onready var powerup_holder: Node = $"../SceneObjects/PowerUps"
-@onready var points_label: Label = %PointsLabel
+@onready var cherry_label: Label = %PointsLabel
+@onready var t_points: RichTextLabel = $TPoints/TPoints
 @export var hearts: Array[Node]
 @onready var sfx_powerup = $sfx_powerup
 var current_weapon_index: int = GameManager.current_weapon_index
@@ -45,13 +46,21 @@ func decrease_health() -> void:
 	if GameManager.lives == 0:
 		call_deferred("_game_over")
 
-func add_points() -> void:
-	GameManager.points += 1
+func add_points(points: int) -> void:
+	GameManager.points += points
 	update_points()
 
+func add_cherries() -> void:
+	GameManager.cherries +=1
+	update_points() 
+
 func update_points() -> void:
-	if points_label:
-		points_label.text = str(GameManager.points)
+	var final_points: String = GameManager.check_zero_add_zero()
+	if cherry_label:
+		cherry_label.text = str(GameManager.cherries)
+	if t_points:
+		t_points.text = final_points
+	
 
 func update_hearts() -> void:
 	for h in 3:

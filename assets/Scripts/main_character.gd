@@ -507,22 +507,39 @@ func retro_triple_flash_then_kill():
 
 	# Kill all enemies
 	#kill_all_enemies()
-	kill_all_enemies_in_camera()
+	var points_final: int = kill_all_enemies_in_camera()
 
 	# Resume the game
 	get_tree().paused = false
+	ui.add_points(points_final)
 	sfx_destro.play()
 
-func kill_all_enemies()->void:
+func kill_all_enemies()->int:
+	var num_enemies: int = 0
+	var point_total: int = 0
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		if enemy.is_visible_in_tree():
+			num_enemies += 1
+			point_total += 150
 			enemy.queue_free()
+	print(num_enemies)
+	return num_enemies * point_total
 			
-func kill_all_enemies_in_camera()->void:
+func kill_all_enemies_in_camera()->int:
+	var num_enemies: int = 0
+	var point_total: int = 0
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		# Assuming your enemy script has the 'is_on_screen' property
 		if enemy.has_method("queue_free_if_on_screen"): # Optional: defensive check
+			if enemy.is_on_screen:
+				num_enemies += 1
+				point_total += 150
 			enemy.queue_free_if_on_screen()
+	print(num_enemies)
+	if num_enemies > 1:
+		return (num_enemies-1) * point_total
+	else:
+		return point_total
 
 func _physics_process(delta: float) -> void:
 	damage_state_setter()

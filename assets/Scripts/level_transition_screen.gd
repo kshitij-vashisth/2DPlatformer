@@ -2,20 +2,23 @@ extends Node
 
 
 @onready var world: RichTextLabel = $UI/WorldInformation/World
-@onready var points_label: Label = $UI/PointsPanel/PointsLabel
+@onready var cherries_label: Label = $UI/PointsPanel/PointsLabel
 @onready var lives: RichTextLabel = $UI/Lives
+@onready var t_points: RichTextLabel = $UI/TPoints/TPoints
 
 func load_level(level_name: String) -> void:
 	var path = "res://assets/Scenes/levels/%s.tscn" % level_name
 	get_tree().change_scene_to_file(path)
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var final_points: String = GameManager.check_zero_add_zero()
 	world.text = str(GameManager.level_list[GameManager.level_index])
-	points_label.text = str(GameManager.points)
+	cherries_label.text = str(GameManager.cherries)
 	lives.text = str(GameManager.lives)
-
+	t_points.text = final_points
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

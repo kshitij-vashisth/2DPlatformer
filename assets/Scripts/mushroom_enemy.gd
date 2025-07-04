@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var mushroom_squish_points: int = 50
 const HIT_CONSTANT_X: float = 300.0
 #OnScreenLogic==================================================================
 var is_on_screen:bool = false
@@ -16,9 +17,10 @@ func _on_VisibilityNotifier2D_screen_entered():
 func _on_VisibilityNotifier2D_screen_exited():
 	is_on_screen = false
 
-func queue_free_if_on_screen():
+func queue_free_if_on_screen()->void:
 	if is_on_screen:
 		queue_free()
+	
 #===============================================================================
 
 @export var can_move: bool = true
@@ -84,6 +86,7 @@ func sword_kill()-> void:
 	get_tree().paused = false
 	velocity.y = -600
 	await get_tree().create_timer(0.2).timeout
+	ui.add_points(mushroom_squish_points*2)
 	queue_free()
 
 
@@ -92,6 +95,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("bullets"):
 		print("hit")
 		body.queue_free()
+		ui.add_points(mushroom_squish_points/2)
 		queue_free()
 		
 	#var y_delta: float
@@ -115,4 +119,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			body.spawn_particle()
 			body.bounce_jump()
 			hide()
+			ui.add_points(mushroom_squish_points)
 			queue_free()

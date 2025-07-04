@@ -1,17 +1,14 @@
 extends Node2D
 
-@onready var score_2: RichTextLabel = $Background/Score/Score2
+@onready var cherry_score: Label = $PointsPanel/PointsLabel
 @export var target_level : PackedScene
-
+@onready var t_points: RichTextLabel = $TPoints/TPoints
+	
 func _ready() -> void:
-	score_2.text =str(GameManager.points)
-	GameManager.points = 0
-	GameManager.lives = 3
-	GameManager.gun_ammo = 0
-	GameManager.sword_strikes = 0
-	GameManager.tome_spells = 0
-	GameManager.current_weapon_index = 0
-	GameManager.level_index = 0
+	var final_points: String = GameManager.check_zero_add_zero()
+	cherry_score.text =str(GameManager.cherries)
+	t_points.text = final_points
+	GameManager.reset_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

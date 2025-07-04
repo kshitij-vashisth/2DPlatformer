@@ -669,9 +669,9 @@ sword_node = [NodePath("Inventory/HBoxContainer/Sword")]
 tome_node = [NodePath("Inventory/HBoxContainer/Tome")]
 
 [node name="Panel" type="Panel" parent="UI"]
-offset_left = 10.0
+offset_left = 210.0
 offset_top = 13.0
-offset_right = 153.0
+offset_right = 353.0
 offset_bottom = 67.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_s1a2m")
 metadata/_edit_use_anchors_ = true
@@ -696,6 +696,28 @@ position = Vector2(20, 23)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_m6yed")
 autoplay = "default"
+
+[node name="TPoints" type="VBoxContainer" parent="UI"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 155.0
+offset_bottom = 85.0
+
+[node name="PlayerName" type="RichTextLabel" parent="UI/TPoints"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "DAVE"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TPoints" type="RichTextLabel" parent="UI/TPoints"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "000000"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Hearts" type="Panel" parent="UI"]
 anchors_preset = 1
