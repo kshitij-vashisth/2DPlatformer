@@ -9,4 +9,8 @@
 * change points system to have points instead of cherries
 * add more types of enemies
 * add settings option to menu and pause menu to control sound levels, texture quality
+* add screen shake on damage
+* add special death animation
+* add gamepad vibrations
+* add warp out on trophy touch
 
