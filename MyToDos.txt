@@ -14,4 +14,5 @@
 * add gamepad vibrations
 * add warp out on trophy touch
 * add special teleportation within levels, to other levels
+* add save game feature, seen intro Boolean, which level reached, resume game
 
