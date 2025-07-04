@@ -5,6 +5,9 @@ extends AnimationPlayer
 @onready var warped_sfx: AudioStreamPlayer2D = $"../warped_sfx"
 @export var target_level : PackedScene
 
+func _change_scene()-> void:
+	get_tree().change_scene_to_packed(target_level)
+
 func _ready() -> void:
 	dave_falling_sfx.play()
 	play("falling")
@@ -28,5 +31,5 @@ func _on_button_pressed() -> void:
 	await dave.animation_finished
 	dave.hide()
 	await get_tree().create_timer(1.3).timeout
-	get_tree().change_scene_to_packed(target_level)
+	call_deferred("_change_scene")
 	

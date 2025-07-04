@@ -4,6 +4,9 @@ extends AnimationPlayer
 @onready var camera_2d: Camera2D = $"../Dave/Camera2D"
 @export var target_level : PackedScene
 
+func _change_scene()-> void:
+	get_tree().change_scene_to_packed(target_level)
+
 func camera_angle_change() -> void:
 	camera_2d.position.x = -168.333
 # Called when the node enters the scene tree for the first time.
@@ -40,4 +43,4 @@ func _on_change_scene_pressed() -> void:
 	await get_tree().create_timer(1).timeout
 	dave_walk_sfx.stop()
 	dave.play("stopped")
-	get_tree().change_scene_to_packed(target_level)
+	call_deferred("_change_scene")

@@ -2,8 +2,9 @@ extends Node
 
 func _ready() -> void:
 	# Set the default mouse cursor shape
-	Input.set_custom_mouse_cursor(null, Input.CURSOR_ARROW)
-
+	#Input.set_custom_mouse_cursor(null, Input.CURSOR_ARROW)
+	pass
+			
 func load_level(level_name: String) -> void:
 	var path = "res://assets/Scenes/levels/%s.tscn" % level_name
 	get_tree().change_scene_to_file(path)

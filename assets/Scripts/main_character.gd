@@ -35,7 +35,7 @@ var current_weapon_index: int = GameManager.current_weapon_index  # 0 = gun, 1 =
 
 
 #Booleans=======================================================
-var is_crouching: bool = false
+#var is_crouching: bool = false
 var double_jumping: bool = false
 var is_falling: bool = false
 var is_walking: bool = false
@@ -298,9 +298,9 @@ func damage_sprite(GRAVITY: Vector2, delta: float)->void:
 		check_lives = GameManager.lives
 # ✅ New: resume movement anim if not falling
 	if is_on_floor() and velocity.x == 0:
-		handle_movement(is_crouching, delta)
+		handle_movement( delta)
 	elif is_on_floor() and velocity.x != 0:
-		handle_movement(is_crouching, delta)
+		handle_movement( delta)
 	elif is_on_wall():
 		handle_wall_slide(GRAVITY, delta)
 
@@ -370,19 +370,16 @@ func spawn_dirt() -> void:
 	dust_node.queue_free()
 
 func _on_coin_collector_area_entered(area: Area2D) -> void:
-	if area.name == "EnemyArea":
-		#print("Enemy Detected")
-		var y_delta: float = area.position.y - position.y
-		#var x_delta: float = position.x - area.position.x 
-		print(y_delta)
-		
 	if area.get_parent().name == "CollectibleNode":
 		#print("play")
 		sfx_coin_collect.play()    
-			
-	#if area.get_parent().name == "PowerUps":
-		##print("play")
-		#sfx_powerup.play()    
+	
+	#if area.is_in_group("trophies"):
+	if area.name == "Finish":
+		sprite_2d.play("warp_out")
+		sfx_warp_in.play()
+		#await get_tree().create_timer(1).timeout
+		await sprite_2d.animation_finished 
 	
 func wall_jump() -> void:
 	if attack_animation_playing:
@@ -401,11 +398,11 @@ func wall_jump() -> void:
 
 		
 
-func handle_movement(is_crouching:bool,delta:float)->void:
+func handle_movement(delta:float)->void:
 	if attack_animation_playing:
 		return  # Don’t override animations while attacking
 	# Add the gravity.
-	if is_on_floor() and not(is_crouching) and (damaged == false):
+	if is_on_floor() and (damaged == false):
 		jump_count = 0
 		# running
 		if (velocity.x > 1 || velocity.x < -1) and is_walking:
@@ -559,9 +556,9 @@ func _physics_process(delta: float) -> void:
 		is_sliding = false
 	#===============================================================================================
 	
-	#CrouchColliderHandling=========================================================================
-	is_crouching = Input.is_action_pressed("down") and is_on_floor()
-	collision_shape_2d_normal.disabled = is_crouching
+	#ColliderHandling=========================================================================
+	var is_crouching = Input.is_action_pressed("down") and is_on_floor()
+	#collision_shape_2d_normal.disabled = is_crouching
 	collision_shape_2d_crouch.disabled = not is_crouching
 	#===============================================================================================
 	
@@ -570,7 +567,7 @@ func _physics_process(delta: float) -> void:
 	#===============================================================================================
 	
 	#TomeInvincibility==============================================================================
-	collision_shape_2d_normal.disabled = tome_using or sword_striking
+	collision_shape_2d_normal.disabled = tome_using or sword_striking or is_crouching
 
 	if tome_using:
 		sprite_2d.modulate.a = 0.3
@@ -602,7 +599,7 @@ func _physics_process(delta: float) -> void:
 	
 	damage_sprite(GRAVITY, delta)
 	ammo_checker()
-	handle_movement(is_crouching, delta)
+	handle_movement( delta)
 	handle_platform_pass()
 	
 	

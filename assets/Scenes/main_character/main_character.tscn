@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://dsp5chgt3px5w"]
+[gd_scene load_steps=104 format=3 uid="uid://dsp5chgt3px5w"]
 
 [ext_resource type="Texture2D" uid="uid://oxroryweqrue" path="res://assets/Art/character/Jump (32x32).png" id="1_0eyao"]
 [ext_resource type="Script" uid="uid://d301x2p4fsa36" path="res://assets/Scripts/main_character.gd" id="1_11o2n"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bkbg2a8fwrsq1" path="res://assets/Art/character/Tome Attack (32x32).png" id="13_gfte0"]
 [ext_resource type="AudioStream" uid="uid://cih8qerr6m1yg" path="res://assets/sfx/whoosh2.mp3" id="13_ux32v"]
 [ext_resource type="Texture2D" uid="uid://cdwdjeabwt4w4" path="res://assets/Art/character/Appearing (96x96).png" id="15_h3q8r"]
+[ext_resource type="Texture2D" uid="uid://16obbirupx4y" path="res://assets/Art/character/Disappearing (96x96).png" id="16_80i45"]
 [ext_resource type="AudioStream" uid="uid://bt3rqmt86badr" path="res://assets/sfx/kage_spell.mp3" id="20_vt5x2"]
 [ext_resource type="AudioStream" uid="uid://cv8smuij8acma" path="res://assets/sfx/rect_show.wav" id="21_vt5x2"]
 [ext_resource type="AudioStream" uid="uid://clbx2x6xh38rr" path="res://assets/sfx/rect_hide.wav" id="22_00jkg"]
@@ -27,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://3mk4gb54aswf" path="res://assets/sfx/sword_strike.mp3" id="24_23fd8"]
 [ext_resource type="AudioStream" uid="uid://16ercn4c4xtm" path="res://assets/sfx/tongue_launch.mp3" id="25_0tmua"]
 [ext_resource type="AudioStream" uid="uid://cvs85fyux1oub" path="res://assets/sfx/warp-in.wav" id="27_vpvvg"]
+[ext_resource type="Script" uid="uid://bcykewy0fnpkw" path="res://assets/Scripts/joypad_control.gd" id="28_h4xbv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwx5a"]
 atlas = ExtResource("3_cqtah")
@@ -274,6 +276,34 @@ region = Rect2(480, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ismhe"]
 atlas = ExtResource("15_h3q8r")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgtj5"]
+atlas = ExtResource("16_80i45")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l72is"]
+atlas = ExtResource("16_80i45")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufb7j"]
+atlas = ExtResource("16_80i45")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj073"]
+atlas = ExtResource("16_80i45")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnsvq"]
+atlas = ExtResource("16_80i45")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wyij"]
+atlas = ExtResource("16_80i45")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdtr5"]
+atlas = ExtResource("16_80i45")
 region = Rect2(576, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5pc05"]
@@ -637,6 +667,32 @@ animations = [{
 "loop": false,
 "name": &"warp_in",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgtj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l72is")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufb7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bj073")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnsvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wyij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdtr5")
+}],
+"loop": false,
+"name": &"warp_out",
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11o2n"]
@@ -646,7 +702,7 @@ size = Vector2(57, 67)
 size = Vector2(69, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2t2n"]
-size = Vector2(56, 36)
+size = Vector2(64, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lp80"]
 size = Vector2(11, 68)
@@ -671,7 +727,7 @@ texture_filter = 1
 position = Vector2(-1, 2)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5pc05")
-animation = &"warp_in"
+animation = &"warp_out"
 autoplay = "default"
 
 [node name="CollisionShape2DNormal" type="CollisionShape2D" parent="."]
@@ -685,7 +741,6 @@ volume_db = -8.0
 max_distance = 4000.0
 
 [node name="CollisionShape2DCrouch" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-2.5, 18)
 shape = SubResource("RectangleShape2D_cqtah")
 
@@ -702,7 +757,7 @@ position = Vector2(65, 15)
 
 [node name="coin_collector" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 8
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coin_collector"]
 position = Vector2(1, 28)
@@ -772,6 +827,10 @@ volume_db = -8.0
 [node name="sfx_warp_in" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("27_vpvvg")
 volume_db = 6.171
+
+[node name="Joypad_control" type="Node2D" parent="."]
+process_mode = 3
+script = ExtResource("28_h4xbv")
 
 [connection signal="area_entered" from="coin_collector" to="." method="_on_coin_collector_area_entered"]
 [connection signal="body_entered" from="SwordCollider" to="." method="_on_sword_collider_body_entered"]

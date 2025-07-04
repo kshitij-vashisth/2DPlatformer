@@ -1,11 +1,10 @@
-[gd_scene load_steps=44 format=4 uid="uid://nixo2c80gj7s"]
+[gd_scene load_steps=43 format=4 uid="uid://nixo2c80gj7s"]
 
 [ext_resource type="Texture2D" uid="uid://dg7t8xynj3wmp" path="res://assets/Art/background/PineForestParallax/MorningLayer6.png" id="1_5ictq"]
 [ext_resource type="Texture2D" uid="uid://dijf7y23k6yul" path="res://assets/Art/background/PineForestParallax/MorningLayer4.png" id="2_1ols8"]
 [ext_resource type="Texture2D" uid="uid://byydrr8rulid8" path="res://assets/Art/terrain/Terrain (16x16).png" id="2_6faey"]
 [ext_resource type="Texture2D" uid="uid://p8qkfrwwx4o2" path="res://assets/Art/background/PineForestParallax/MorningLayer2.png" id="3_kx2o3"]
 [ext_resource type="PackedScene" uid="uid://dsp5chgt3px5w" path="res://assets/Scenes/main_character/main_character.tscn" id="3_nc7oo"]
-[ext_resource type="PackedScene" uid="uid://drb3fvfmixb4t" path="res://assets/Scenes/game_objects/collectible.tscn" id="4_6x3wt"]
 [ext_resource type="PackedScene" uid="uid://byj8yyf6ju5p1" path="res://assets/Scenes/game_objects/end.tscn" id="5_3453u"]
 [ext_resource type="Script" uid="uid://cu5cy0xx6blpj" path="res://assets/Scripts/game_manager.gd" id="6_46pvi"]
 [ext_resource type="PackedScene" uid="uid://dqfi7lfkoyiqt" path="res://assets/Scenes/levels/Level3.tscn" id="6_70df5"]
@@ -415,22 +414,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
 [node name="CollectibleNode" type="Node" parent="SceneObjects"]
-
-[node name="collectible" parent="SceneObjects/CollectibleNode" instance=ExtResource("4_6x3wt")]
-visible = false
-position = Vector2(402, 332)
-
-[node name="collectible2" parent="SceneObjects/CollectibleNode" instance=ExtResource("4_6x3wt")]
-visible = false
-position = Vector2(695, 301)
-
-[node name="collectible3" parent="SceneObjects/CollectibleNode" instance=ExtResource("4_6x3wt")]
-visible = false
-position = Vector2(984, 498)
-
-[node name="collectible5" parent="SceneObjects/CollectibleNode" instance=ExtResource("4_6x3wt")]
-visible = false
-position = Vector2(1604, 397)
 
 [node name="Finish" parent="SceneObjects" instance=ExtResource("5_3453u")]
 position = Vector2(2037, 209)

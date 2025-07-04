@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dr0pvu535370q"]
+[gd_scene load_steps=22 format=4 uid="uid://dr0pvu535370q"]
 
 [ext_resource type="Script" uid="uid://c0vbodpe0arpd" path="res://assets/Scripts/intro_animation_controller.gd" id="1_ygoj1"]
 [ext_resource type="PackedScene" uid="uid://c6aft1wn24r20" path="res://assets/Scenes/cutscenes/intro-part-2.tscn" id="2_fndg2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://oknk5rn6qlo2" path="res://assets/Scripts/panel.gd" id="4_tcjyi"]
 [ext_resource type="Texture2D" uid="uid://d1t4bupxgmbvt" path="res://assets/Art/game_elements/dialog_box/tick-yes.png" id="5_6iw6v"]
 [ext_resource type="AudioStream" uid="uid://ck7nfm0p8xim3" path="res://assets/sfx/walk_dave.mp3" id="6_uksdk"]
+[ext_resource type="Script" uid="uid://bcykewy0fnpkw" path="res://assets/Scripts/joypad_control.gd" id="8_fndg2"]
 
 [sub_resource type="Animation" id="Animation_13or8"]
 length = 10.0
@@ -409,6 +410,9 @@ stream = ExtResource("6_uksdk")
 volume_db = -12.0
 autoplay = true
 parameters/looping = true
+
+[node name="Joypad_control" type="Node2D" parent="."]
+script = ExtResource("8_fndg2")
 
 [connection signal="pressed" from="CanvasLayer/Panel/Button" to="IntroAnimationController" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Button" to="CanvasLayer/Panel" method="_on_button_pressed"]
