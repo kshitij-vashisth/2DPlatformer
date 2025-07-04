@@ -4,15 +4,23 @@
 * add an interface screen that comes before the first level and between levels and when you fall ----- done
 #====================================================================
 
-* add more levels
+#ImmediateToDos============================================================================================
 * modify lives system
 * change points system to have points instead of cherries
+* add warp out on trophy touch
+* add special death animation
+* add screen shake on damage
+
+#==========================================================================================================
+
+#MediumToDos===============================================================================================
+* add more levels
 * add more types of enemies
 * add settings option to menu and pause menu to control sound levels, texture quality
-* add screen shake on damage
-* add special death animation
 * add gamepad vibrations
-* add warp out on trophy touch
+#==========================================================================================================
+
+#LateToDos==================================================================================================
 * add special teleportation within levels, to other levels
 * add save game feature, seen intro Boolean, which level reached, resume game
-
+#===========================================================================================================
