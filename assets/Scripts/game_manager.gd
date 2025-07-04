@@ -18,7 +18,7 @@ var inventory: Array = [gun_ammo, sword_strikes, tome_spells]
 #LevelTransitionUtilities==============================
 var level_list: Array = [
 	"Tutorial-1", "Tutorial-2", "Tutorial-3",
-	"1-1",
+	"World 1-1",
 ]
 var level_index: int = 0
 var level_changer_list: Array = [
