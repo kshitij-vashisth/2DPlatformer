@@ -5,6 +5,10 @@ extends CanvasLayer  # or Control
 @export var hearts: Array[Node]
 @onready var sfx_powerup = $sfx_powerup
 var current_weapon_index: int = GameManager.current_weapon_index
+@onready var player: CharacterBody2D = $"../SceneObjects/Player"
+
+
+@export var defeated_particle: PackedScene
 
 @export var gun_node: Array[Node]
 @export var sword_node: Array[Node]
@@ -13,6 +17,17 @@ var current_weapon_index: int = GameManager.current_weapon_index
 @onready var gun_ammo: RichTextLabel = $Inventory/HBoxContainer/Gun/Gun_ammo
 @onready var sword_strikes: RichTextLabel = $Inventory/HBoxContainer/Sword/sword_strikes
 @onready var tome_uses: RichTextLabel = $Inventory/HBoxContainer/Tome/tome_uses
+
+func _live_gone_screen() -> void:
+	get_tree().change_scene_to_file("res://assets/Scenes/levels/LevelTransitionScreen.tscn")
+	
+
+func spawn_defeat() -> void:
+	var warp_node = defeated_particle.instantiate()
+	warp_node.global_position = player.global_position
+	get_parent().add_child(warp_node)
+	await get_tree().create_timer(2).timeout
+	warp_node.queue_free()
 
 func _ready() -> void:
 	Input.set_custom_mouse_cursor(load("res://assets/Art/game_elements/mouse-cursor.png"), Input.CURSOR_ARROW)
@@ -40,12 +55,23 @@ func _game_over() -> void:
 	get_tree().change_scene_to_file("res://assets/Scenes/menu/game_over.tscn")
 
 func decrease_health() -> void:
-	GameManager.lives -= 1
+	GameManager.hearts -= 1
 	#print("Lives left:", GameManager.lives)
 	update_hearts()
-	if GameManager.lives == 0:
-		call_deferred("_game_over")
-
+	if GameManager.hearts == 0:
+		if GameManager.lives == 0:
+			call_deferred("_game_over")
+		else:
+			GameManager.lives -= 1
+			GameManager.hearts = 3
+			player.set_physics_process(false)
+			player.set_process(false)
+			player.velocity = Vector2.ZERO
+			player.hide()
+			spawn_defeat()
+			await get_tree().create_timer(1).timeout
+			call_deferred("_live_gone_screen")
+			
 func add_points(points: int) -> void:
 	GameManager.points += points
 	update_points()
@@ -64,7 +90,7 @@ func update_points() -> void:
 
 func update_hearts() -> void:
 	for h in 3:
-		if h < GameManager.lives:
+		if h < GameManager.hearts:
 			hearts[h].show()
 		else:
 			hearts[h].hide()

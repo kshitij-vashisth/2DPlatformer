@@ -4,11 +4,11 @@
 * add an interface screen that comes before the first level and between levels and when you fall ----- done
 * change points system to have points instead of cherries --- done
 * add warp out on trophy touch ---- done
+* modify lives system --- done
+* add special death animation --- done
 #====================================================================
 
 #ImmediateToDos============================================================================================
-* modify lives system
-* add special death animation
 * add screen shake on damage
 
 #==========================================================================================================

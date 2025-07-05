@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://dqfi7lfkoyiqt"]
+[gd_scene load_steps=54 format=4 uid="uid://dqfi7lfkoyiqt"]
 
 [ext_resource type="Texture2D" uid="uid://dg7t8xynj3wmp" path="res://assets/Art/background/PineForestParallax/MorningLayer6.png" id="1_u3umb"]
 [ext_resource type="Texture2D" uid="uid://dijf7y23k6yul" path="res://assets/Art/background/PineForestParallax/MorningLayer4.png" id="2_j0tje"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cu5cy0xx6blpj" path="res://assets/Scripts/game_manager.gd" id="13_17vcy"]
 [ext_resource type="AudioStream" uid="uid://c02eqceqv4tuk" path="res://assets/Sound/bgm/2020-04-24_-_Arcade_Kid_-_FesliyanStudios.com_-_David_Renda.mp3" id="14_etlxq"]
 [ext_resource type="Script" uid="uid://b3jqbu0mt24ki" path="res://assets/Scripts/ui.gd" id="15_3tlpo"]
+[ext_resource type="PackedScene" uid="uid://b25knw286fscx" path="res://assets/Scenes/main_character/defeated.tscn" id="16_j0tje"]
 [ext_resource type="Texture2D" uid="uid://b52uy3a5xwnp0" path="res://assets/Art/game_elements/Cherries.png" id="16_sks8f"]
 [ext_resource type="Texture2D" uid="uid://2tfcp1jpqd2l" path="res://assets/Art/game_elements/heart.png" id="17_sdct6"]
 [ext_resource type="Script" uid="uid://1fiuwkd14tpp" path="res://assets/Scripts/pause.gd" id="18_3eut8"]
@@ -534,6 +535,7 @@ parameters/looping = true
 unique_name_in_owner = true
 script = ExtResource("15_3tlpo")
 hearts = [NodePath("Hearts/HBoxContainer/Heart"), NodePath("Hearts/HBoxContainer/Heart2"), NodePath("Hearts/HBoxContainer/Heart3")]
+defeated_particle = ExtResource("16_j0tje")
 gun_node = [NodePath("Inventory/HBoxContainer/Gun")]
 sword_node = [NodePath("Inventory/HBoxContainer/Sword")]
 tome_node = [NodePath("Inventory/HBoxContainer/Tome")]

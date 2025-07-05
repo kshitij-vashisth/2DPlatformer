@@ -1,5 +1,6 @@
 extends Node
 
+var hearts: int = 3
 var points: int = 0
 var lives: int = 3
 var cherries: int = 0
@@ -48,6 +49,7 @@ func spawn_gun(pos) -> void:
 func reset_game() -> void:
 	cherries = 0
 	points = 0
+	hearts = 3
 	lives = 3
 	gun_ammo = 0
 	sword_strikes = 0

@@ -22,5 +22,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var _v: float = delta
 	await get_tree().create_timer(3).timeout
 	load_level(GameManager.level_changer_list[GameManager.level_index])

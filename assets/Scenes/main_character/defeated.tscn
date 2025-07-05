@@ -1,0 +1,123 @@
+[gd_scene load_steps=18 format=3 uid="uid://b25knw286fscx"]
+
+[ext_resource type="Texture2D" uid="uid://cpbnftgwb86mp" path="res://assets/Art/character/destruction1.png" id="1_5o2f6"]
+[ext_resource type="AudioStream" uid="uid://segoiskf6xbb" path="res://assets/sfx/defeated.mp3" id="2_rj07p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_na1fp"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co010"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sdep"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wy2eg"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2rcg"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4dc1"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr1qf"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r18i3"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45f15"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0m0u"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvo4k"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bucs2"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihyxp"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7bq4"]
+atlas = ExtResource("1_5o2f6")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_41kvx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_na1fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co010")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sdep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wy2eg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2rcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4dc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr1qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r18i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45f15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0m0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvo4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bucs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihyxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7bq4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Defeated" type="AnimatedSprite2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_41kvx")
+autoplay = "default"
+frame = 13
+frame_progress = 1.0
+
+[node name="sfx_defeated" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_rj07p")
+volume_db = 6.0
+autoplay = true

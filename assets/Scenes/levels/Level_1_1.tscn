@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://dfdf2urcmg4wp"]
+[gd_scene load_steps=54 format=4 uid="uid://dfdf2urcmg4wp"]
 
 [ext_resource type="Texture2D" uid="uid://dg7t8xynj3wmp" path="res://assets/Art/background/PineForestParallax/MorningLayer6.png" id="1_d24w2"]
 [ext_resource type="Texture2D" uid="uid://dijf7y23k6yul" path="res://assets/Art/background/PineForestParallax/MorningLayer4.png" id="2_3lufg"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://b3jqbu0mt24ki" path="res://assets/Scripts/ui.gd" id="14_2b7gw"]
 [ext_resource type="Texture2D" uid="uid://b52uy3a5xwnp0" path="res://assets/Art/game_elements/Cherries.png" id="15_hk6ku"]
 [ext_resource type="Texture2D" uid="uid://2tfcp1jpqd2l" path="res://assets/Art/game_elements/heart.png" id="16_682rw"]
+[ext_resource type="PackedScene" uid="uid://b25knw286fscx" path="res://assets/Scenes/main_character/defeated.tscn" id="16_a5fnw"]
 [ext_resource type="Script" uid="uid://1fiuwkd14tpp" path="res://assets/Scripts/pause.gd" id="17_2gyl2"]
 [ext_resource type="Texture2D" uid="uid://ckmjxd36bbtx1" path="res://assets/Art/game_elements/Inventory_box.png" id="18_ue7dp"]
 [ext_resource type="AudioStream" uid="uid://co37fl6wxf1wy" path="res://assets/sfx/powerup.mp3" id="19_jaomg"]
@@ -535,6 +536,7 @@ parameters/looping = true
 unique_name_in_owner = true
 script = ExtResource("14_2b7gw")
 hearts = [NodePath("Hearts/HBoxContainer/Heart"), NodePath("Hearts/HBoxContainer/Heart2"), NodePath("Hearts/HBoxContainer/Heart3")]
+defeated_particle = ExtResource("16_a5fnw")
 gun_node = [NodePath("Inventory/HBoxContainer/Gun")]
 sword_node = [NodePath("Inventory/HBoxContainer/Sword")]
 tome_node = [NodePath("Inventory/HBoxContainer/Tome")]

@@ -25,6 +25,7 @@ var current_weapon_index: int = GameManager.current_weapon_index  # 0 = gun, 1 =
 @onready var sfx_jump: AudioStreamPlayer2D = $sfx_jump
 @onready var sfx_coin_collect: AudioStreamPlayer2D = %SFXCoinCollect
 @onready var sfx_shoot: AudioStreamPlayer2D = $sfx_shoot
+@onready var sfx_defeated: AudioStreamPlayer2D = $sfx_defeated
 #=========================================================
 
 #WhiteFlashRect=================================================
@@ -142,7 +143,7 @@ var dash_timer: float = 0.0
 
 
 @onready var ui: CanvasLayer = %UI
-var check_lives:int = 0
+var check_hearts:int = 0
 
 @onready var bullet_spawn_point: Marker2D = $BulletSpawnPoint
 var set_pos_bullet_spawn = bullet_spawn_point
@@ -166,7 +167,7 @@ func _ready()->void:
 	sprite_2d.play("warp_in")
 	sfx_warp_in.play()
 	position_sword = abs($SwordCollider.position.x)
-	check_lives = GameManager.lives
+	check_hearts = GameManager.hearts
 	gun.hide()
 	sprite_2d.connect("animation_finished", Callable(self, "_on_animation_finished"))
 	
@@ -284,18 +285,18 @@ func shoot(direction, bsp) -> void:
 
 func damage_sprite(GRAVITY: Vector2, delta: float)->void:
 	#damage_state_setter()
-	if check_lives > GameManager.lives:
+	if check_hearts > GameManager.hearts:
 		damaged = true
 		if damaged:
 			print("damaged")
 			sprite_2d.play("damaged")
 			#await sprite_2d.animation_finished 
-		check_lives = GameManager.lives
+		check_hearts = GameManager.hearts
 		damaged = false
 	#print(GameManager.lives)
 	#print(check_lives)
-	if check_lives < GameManager.lives:
-		check_lives = GameManager.lives
+	if check_hearts < GameManager.hearts:
+		check_hearts = GameManager.hearts
 # ✅ New: resume movement anim if not falling
 	if is_on_floor() and velocity.x == 0:
 		handle_movement( delta)
