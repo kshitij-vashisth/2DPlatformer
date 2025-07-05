@@ -69,7 +69,7 @@ func decrease_health() -> void:
 			player.velocity = Vector2.ZERO
 			player.hide()
 			spawn_defeat()
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(1.2).timeout
 			call_deferred("_live_gone_screen")
 			
 func add_points(points: int) -> void:
