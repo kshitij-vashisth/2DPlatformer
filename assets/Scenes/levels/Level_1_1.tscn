@@ -514,8 +514,6 @@ _bundled = {
 "version": 3
 }
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p6pjf"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4jyq3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rqdlv"]
@@ -649,6 +647,8 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jy41p"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p6pjf"]
+
 [node name="Node" type="Node"]
 
 [node name="SceneObjects" type="Node" parent="."]
@@ -722,13 +722,6 @@ position = Vector2(5785, 381)
 
 [node name="MushroomEnemy3" parent="SceneObjects/Enemies" instance=ExtResource("10_0d3oa")]
 position = Vector2(2461, 479)
-
-[node name="world boundary" type="Area2D" parent="SceneObjects"]
-position = Vector2(847, 764)
-script = ExtResource("11_3xaqe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneObjects/world boundary"]
-shape = SubResource("WorldBoundaryShape2D_p6pjf")
 
 [node name="PowerUps" type="Node" parent="SceneObjects"]
 
@@ -1070,6 +1063,13 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="body_entered" from="SceneObjects/world boundary" to="SceneObjects/world boundary" method="_on_body_entered"]
+[node name="world boundary" type="Area2D" parent="."]
+position = Vector2(847, 764)
+script = ExtResource("11_3xaqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world boundary"]
+shape = SubResource("WorldBoundaryShape2D_p6pjf")
+
 [connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/ResumeButton" to="UI/Pause" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/MainMenuButton" to="UI/Pause" method="_on_main_menu_button_pressed"]
+[connection signal="body_entered" from="world boundary" to="world boundary" method="_on_body_entered"]

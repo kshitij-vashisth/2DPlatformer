@@ -47,7 +47,7 @@ func spawn_gun(pos) -> void:
 	get_tree().current_scene.add_child(gun)
 	#get_tree().root.add_child(gun)
 #======================================================
-func reset_weapons() -> void:
+func reset_game_soft() -> void:
 	has_gun = false
 	has_sword = false
 	has_tome = false
@@ -55,6 +55,10 @@ func reset_weapons() -> void:
 	sword_strikes = 0
 	tome_spells = 0 
 	current_weapon_index = 0
+	cherries = 0
+	points = 0
+	hearts = 3
+	lives = 3
 
 
 func reset_game() -> void:
