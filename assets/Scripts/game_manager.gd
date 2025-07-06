@@ -1,5 +1,7 @@
 extends Node
 
+var level_1_1_loaded: int = 0
+
 var hearts: int = 3
 var points: int = 0
 var lives: int = 3
@@ -45,6 +47,15 @@ func spawn_gun(pos) -> void:
 	get_tree().current_scene.add_child(gun)
 	#get_tree().root.add_child(gun)
 #======================================================
+func reset_weapons() -> void:
+	has_gun = false
+	has_sword = false
+	has_tome = false
+	gun_ammo = 0
+	sword_strikes = 0
+	tome_spells = 0 
+	current_weapon_index = 0
+
 
 func reset_game() -> void:
 	cherries = 0

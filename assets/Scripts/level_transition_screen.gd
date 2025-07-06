@@ -14,6 +14,9 @@ func load_level(level_name: String) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if GameManager.level_index == 3 and GameManager.level_1_1_loaded == 0:
+		GameManager.level_1_1_loaded += 1
+		GameManager.reset_weapons()
 	var final_points: String = GameManager.check_zero_add_zero()
 	world.text = str(GameManager.level_list[GameManager.level_index])
 	cherries_label.text = str(GameManager.cherries)
