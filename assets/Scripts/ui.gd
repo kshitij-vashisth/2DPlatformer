@@ -21,8 +21,16 @@ var current_weapon_index: int = GameManager.current_weapon_index
 func _live_gone_screen() -> void:
 	get_tree().change_scene_to_file("res://assets/Scenes/levels/LevelTransitionScreen.tscn")
 	
+func _player_collider_off() -> void:
+	player.get_node("CollisionShape2DNormal").disabled = true
+
 
 func spawn_defeat() -> void:
+	call_deferred("_player_collider_off")
+	player.set_physics_process(false)
+	player.set_process(false)
+	player.velocity = Vector2.ZERO
+	player.hide()
 	var warp_node = defeated_particle.instantiate()
 	warp_node.global_position = player.global_position
 	get_parent().add_child(warp_node)
@@ -64,10 +72,10 @@ func decrease_health() -> void:
 		else:
 			GameManager.lives -= 1
 			GameManager.hearts = 3
-			player.set_physics_process(false)
-			player.set_process(false)
-			player.velocity = Vector2.ZERO
-			player.hide()
+			#player.set_physics_process(false)
+			#player.set_process(false)
+			#player.velocity = Vector2.ZERO
+			#player.hide()
 			spawn_defeat()
 			await get_tree().create_timer(1.2).timeout
 			call_deferred("_live_gone_screen")
