@@ -18,6 +18,7 @@
 * add more levels --- in progress --- 1 added
 * add more types of enemies
 * add settings option to menu and pause menu to control sound levels, texture quality
+# add controls screen to main menu
 #==========================================================================================================
 
 #LateToDos==================================================================================================
