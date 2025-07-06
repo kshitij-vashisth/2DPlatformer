@@ -11,10 +11,11 @@
 #ImmediateToDos============================================================================================
 * add screen shake on damage
 * add gamepad vibrations
+* add an enemy that follows you around in next level
 #==========================================================================================================
 
 #MediumToDos===============================================================================================
-* add more levels
+* add more levels --- in progress --- 1 added
 * add more types of enemies
 * add settings option to menu and pause menu to control sound levels, texture quality
 #==========================================================================================================
