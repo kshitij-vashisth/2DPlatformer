@@ -43,14 +43,25 @@ func look_for_player()-> void:
 	elif current_state == States.CHASE:
 		stop_chase()
 
-func move_enemy()->void:
+func move_enemy() -> void:
+	var at_edge = is_at_platform_edge()
+
 	if current_state == States.WANDER:
 		sprite_2d.play("walk")
-		velocity.x = move_speed * direction
-	
-	if current_state == States.CHASE:
+		if not at_edge:
+			velocity.x = move_speed * direction
+		else:
+			direction *= -1
+			update_direction_visuals()
+
+	elif current_state == States.CHASE:
 		sprite_2d.play("chase")
-		velocity.x = 2 * move_speed * direction
+		if not at_edge:
+			velocity.x = 2 * move_speed * direction
+		else:
+			velocity.x = 0
+			await get_tree().create_timer(0.7).timeout
+			stop_chase()
 
 func reverse_direction()->void:
 	if is_on_wall():
@@ -59,14 +70,15 @@ func reverse_direction()->void:
 		get_player.scale.x *= -1
 		sprite_2d.scale.x *= -1
 		last_direction = direction
+		
+func update_direction_visuals():
+	ground_checker.position.x *= -1
+	get_player.scale.x *= -1
+	sprite_2d.scale.x *= -1
+	last_direction = direction
 
-func platform_edge()->void:
-	if not ground_checker.is_colliding():
-		direction = -direction
-		ground_checker.position.x *= -1
-		get_player.scale.x *= -1
-		sprite_2d.scale.x *= -1
-		last_direction = direction
+func is_at_platform_edge()->bool:
+	return not ground_checker.is_colliding()
 
 func add_gravity(delta: float) -> void:
 	# Add the gravity.
@@ -94,7 +106,7 @@ func _physics_process(delta: float) -> void:
 	add_gravity(delta)
 	look_for_player()
 	move_enemy()
-	platform_edge()
+	#platform_edge()
 	move_and_slide()
 	reverse_direction()
 	
@@ -119,7 +131,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		sfx_hurt.play()
 		ui.decrease_health()
 		if x_delta > 0:
-			body.side_jump(500)
+			body.side_jump(700)
 		else:
-			body.side_jump(-500)
+			body.side_jump(-700)
 		

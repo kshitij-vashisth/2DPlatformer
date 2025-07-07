@@ -126,13 +126,15 @@ func double_jumping_state_setter ()->void:
 
 
 #PhysicsVariables===============================================
+var knockback_timer := 0.0
+const KNOCKBACK_DURATION := 0.8  # seconds
 const DASH_SPEED: float = 18200.0
 const SPEED: float = 400.0
 const JUMP_VELOCITY: float = -1000.0
 const WALL_PUSHBACK: float = SPEED*2
 const STEP_SPEED:float = 12.0
 var jump_count: int = 0
-var dash_duration: float = 3.0  # seconds
+var dash_duration: float = 2.5  # seconds
 var dash_timer: float = 0.0
 #===============================================================
 
@@ -339,7 +341,8 @@ func dash():
 func side_jump(x) -> void:
 	is_sliding = false  # Prevent slide state carryover
 	#velocity.y = JUMP_VELOCITY/2
-	velocity.x = 2*x
+	velocity.x = x
+	knockback_timer = KNOCKBACK_DURATION
 	
 func spawn_dash_smoke(direction) -> void:
 	var smoke_node = dash_smoke.instantiate()
@@ -543,7 +546,15 @@ func kill_all_enemies_in_camera()->int:
 	else:
 		return point_total
 
+func knockback_stay(delta: float)->void:
+	if knockback_timer > 0.0:
+		knockback_timer -= delta
+		move_and_slide()
+		return  # Skip rest of player control while knocked back
+
+
 func _physics_process(delta: float) -> void:
+	knockback_stay(delta)
 	damage_state_setter()
 	var GRAVITY: Vector2 = get_gravity()
 	if is_sliding or is_on_wall():
