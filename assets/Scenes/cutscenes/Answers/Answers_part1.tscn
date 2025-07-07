@@ -1,7 +1,7 @@
 [gd_scene load_steps=45 format=4 uid="uid://cequod0jpgyg"]
 
 [ext_resource type="Texture2D" uid="uid://df5v4m4kww8tr" path="res://assets/Art/character/Zero man/0.png" id="1_8ygua"]
-[ext_resource type="Script" uid="uid://cmujeyequmvx3" path="res://assets/Scenes/cutscenes/Answers/scene_controller.gd" id="2_c44no"]
+[ext_resource type="Script" uid="uid://cmujeyequmvx3" path="res://assets/Scripts/scene_controller.gd" id="2_c44no"]
 [ext_resource type="Texture2D" uid="uid://dmjokq1an2moe" path="res://assets/Art/merchant/Gipsy spritesheet.png" id="2_nvj3p"]
 [ext_resource type="Texture2D" uid="uid://byydrr8rulid8" path="res://assets/Art/terrain/Terrain (16x16).png" id="3_c44no"]
 [ext_resource type="PackedScene" uid="uid://coleu2na2nn1l" path="res://assets/Scenes/game_objects/warp_in.tscn" id="3_ype5v"]
@@ -86,6 +86,21 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_1idtk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(35, 396)]
+}
+
 [sub_resource type="Animation" id="Animation_ype5v"]
 resource_name = "walk"
 length = 9.0
@@ -100,21 +115,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(35, 394), Vector2(1070, 394)]
-}
-
-[sub_resource type="Animation" id="Animation_1idtk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(35, 396)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vtkfq"]
@@ -692,7 +692,7 @@ animations = [{
 position = Vector2(35, 396)
 sprite_frames = SubResource("SpriteFrames_8ms2q")
 animation = &"walk"
-frame_progress = 0.671685
+frame_progress = 0.0414313
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -52)
@@ -710,7 +710,7 @@ position = Vector2(1138, 365)
 scale = Vector2(1.7, 1.7)
 sprite_frames = SubResource("SpriteFrames_bmlo7")
 autoplay = "default"
-frame_progress = 0.861803
+frame_progress = 0.23155
 flip_h = true
 
 [node name="TileMap" type="TileMapLayer" parent="."]

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c131a5obuijmu" path="res://assets/Art/game_elements/Collected.png" id="6_mgtvn"]
 [ext_resource type="PackedScene" uid="uid://drb3fvfmixb4t" path="res://assets/Scenes/game_objects/collectible.tscn" id="7_uflnr"]
 [ext_resource type="PackedScene" uid="uid://byj8yyf6ju5p1" path="res://assets/Scenes/game_objects/end.tscn" id="8_m026k"]
-[ext_resource type="PackedScene" uid="uid://ite1oa8agpg2" path="res://assets/Scenes/menu/winner.tscn" id="9_j70jp"]
+[ext_resource type="PackedScene" uid="uid://cequod0jpgyg" path="res://assets/Scenes/cutscenes/Answers/Answers_part1.tscn" id="9_j70jp"]
 [ext_resource type="PackedScene" uid="uid://u580d5ii8j11" path="res://assets/Scenes/enemies/mushroom_enemy.tscn" id="10_a8b1b"]
 [ext_resource type="PackedScene" uid="uid://cpylgvid1ginr" path="res://assets/Scenes/game_objects/HiddenQuestionBlock_Gun.tscn" id="11_fhycm"]
 [ext_resource type="Texture2D" uid="uid://bxugf5xh4cggm" path="res://assets/Art/game_elements/End (Idle).png" id="12_31duy"]
