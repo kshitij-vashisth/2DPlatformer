@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c131a5obuijmu" path="res://assets/Art/game_elements/Collected.png" id="6_f1r88"]
 [ext_resource type="PackedScene" uid="uid://drb3fvfmixb4t" path="res://assets/Scenes/game_objects/collectible.tscn" id="7_wd6au"]
 [ext_resource type="PackedScene" uid="uid://byj8yyf6ju5p1" path="res://assets/Scenes/game_objects/end.tscn" id="8_oe8xx"]
-[ext_resource type="PackedScene" uid="uid://ite1oa8agpg2" path="res://assets/Scenes/menu/winner.tscn" id="9_5ix2f"]
+[ext_resource type="PackedScene" uid="uid://cv15fy8rfjmbm" path="res://assets/Scenes/levels/Level_1_3.tscn" id="9_8w6bw"]
 [ext_resource type="PackedScene" uid="uid://u580d5ii8j11" path="res://assets/Scenes/enemies/mushroom_enemy.tscn" id="10_3davk"]
 [ext_resource type="PackedScene" uid="uid://bq0qtkga348n3" path="res://assets/Scenes/game_objects/sign.tscn" id="11_w4j3k"]
 [ext_resource type="PackedScene" uid="uid://cpylgvid1ginr" path="res://assets/Scenes/game_objects/HiddenQuestionBlock_Gun.tscn" id="12_8w6bw"]
@@ -740,7 +740,7 @@ position = Vector2(5427, 104)
 
 [node name="Finish" parent="SceneObjects" instance=ExtResource("8_oe8xx")]
 position = Vector2(8546, 209)
-target_level = ExtResource("9_5ix2f")
+target_level = ExtResource("9_8w6bw")
 
 [node name="Enemies" type="Node" parent="SceneObjects"]
 
