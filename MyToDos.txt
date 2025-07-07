@@ -12,7 +12,7 @@
 #ImmediateToDos============================================================================================
 * add cutscene that explains the situation of choosing between upgrade and answers
  - if you don't get answers you play the game again from world 1-1
- - no boss battle at end
+ - no boss battle at end if answers not complete
 * add trap to game
 * add screen shake on damage
 * add gamepad vibrations
@@ -20,10 +20,10 @@
 #==========================================================================================================
 
 #MediumToDos===============================================================================================
-* add more levels --- in progress --- 1 added
+* add more levels --- in progress --- 2 added
 * add more types of enemies
 * add settings option to menu and pause menu to control sound levels, texture quality
-# add controls screen to main menu
+* add controls screen to main menu
 #==========================================================================================================
 
 #LateToDos==================================================================================================
