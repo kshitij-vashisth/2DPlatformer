@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://co37fl6wxf1wy" path="res://assets/sfx/powerup.mp3" id="21_vu5is"]
 [ext_resource type="Script" uid="uid://crqutdk0y0hv0" path="res://assets/Scripts/fall_area.gd" id="22_hqrx6"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j70jp"]
 texture = ExtResource("3_n2tuj")
 0:0/0 = 0
 1:0/0 = 0
@@ -287,7 +287,7 @@ texture = ExtResource("3_n2tuj")
 16:3/0 = 0
 11:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d24w2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_piicn"]
 texture = ExtResource("4_5w3o5")
 0:0/0 = 0
 0:1/0 = 0
@@ -448,8 +448,8 @@ texture = ExtResource("4_5w3o5")
 [sub_resource type="TileSet" id="TileSet_272bh"]
 physics_layer_0/collision_layer = 6
 physics_layer_0/collision_mask = 9
-sources/0 = SubResource("TileSetAtlasSource_7mycd")
-sources/2 = SubResource("TileSetAtlasSource_d24w2")
+sources/0 = SubResource("TileSetAtlasSource_j70jp")
+sources/2 = SubResource("TileSetAtlasSource_piicn")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxirm"]
 atlas = ExtResource("6_mgtvn")

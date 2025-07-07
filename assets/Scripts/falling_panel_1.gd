@@ -11,7 +11,7 @@ func _ready() -> void:
 	.then( Anima.Node($Button).anima_animation('tada', 0.5 ).anima_delay(-0.2) ) \
 	.set_visibility_strategy(ANIMA.VISIBILITY.TRANSPARENT_ONLY) \
 	.play_with_delay(0.5)
-
+m
 
 func _on_button_pressed() -> void:
 	var anima = Anima.begin(self, 'fade_out')
