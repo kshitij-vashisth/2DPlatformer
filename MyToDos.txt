@@ -6,6 +6,7 @@
 * add warp out on trophy touch ---- done
 * modify lives system --- done
 * add special death animation --- done
+* added dash cooldown timer --- done
 #====================================================================
 
 #ImmediateToDos============================================================================================

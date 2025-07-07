@@ -9,6 +9,7 @@ var tome_spells: int = GameManager.tome_spells
 var inventory = [gun_ammo, sword_strikes, tome_spells]
 var current_weapon_index: int = GameManager.current_weapon_index  # 0 = gun, 1 = sword, 2 = tome
 #========================================================
+@onready var dash_cooldown: RichTextLabel = $"../../UI/Dash Panel/DashTimer"
 
 @onready var gc: Node2D = $GrappleController
 
@@ -131,7 +132,7 @@ const JUMP_VELOCITY: float = -1000.0
 const WALL_PUSHBACK: float = SPEED*2
 const STEP_SPEED:float = 12.0
 var jump_count: int = 0
-var dash_duration: float = 0.8  # seconds
+var dash_duration: float = 3.0  # seconds
 var dash_timer: float = 0.0
 #===============================================================
 
@@ -460,9 +461,9 @@ func disable_hit () -> void:
 	$coin_collector/CollisionShape2D.disabled = false
 	$CollisionShape2DNormal.disabled = false
 
-#func _process(delta: float) -> void:
-	#if is_sliding:
-		#print("sliding")
+func _process(delta: float) -> void:
+	if int(dash_timer) == 0:
+		dash_cooldown.hide()
 
 func sword_slash():
 	if attack_animation_playing: return
@@ -665,6 +666,8 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle dash timer
 	if is_dashing:
+		dash_cooldown.text = "Dash off for: "+str(int(dash_timer * 100))+" ms"
+		dash_cooldown.show()
 		dash_timer -= delta
 		if dash_timer <= 0.0:
 			is_dashing = false

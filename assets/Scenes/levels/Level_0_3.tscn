@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://dqfi7lfkoyiqt"]
+[gd_scene load_steps=55 format=4 uid="uid://dqfi7lfkoyiqt"]
 
 [ext_resource type="Texture2D" uid="uid://dg7t8xynj3wmp" path="res://assets/Art/background/PineForestParallax/MorningLayer6.png" id="1_u3umb"]
 [ext_resource type="Texture2D" uid="uid://dijf7y23k6yul" path="res://assets/Art/background/PineForestParallax/MorningLayer4.png" id="2_j0tje"]
@@ -427,6 +427,8 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jy41p"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j0tje"]
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p6pjf"]
 
 [node name="Node" type="Node"]
@@ -830,6 +832,33 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 25
 text = "000000"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dash Panel" type="Panel" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -48.0
+offset_right = 250.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_j0tje")
+
+[node name="DashTimer" type="RichTextLabel" parent="UI/Dash Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Dash off for: 100 ms"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1

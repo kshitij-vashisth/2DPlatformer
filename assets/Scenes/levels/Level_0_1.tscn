@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://b47kkbptq35is"]
+[gd_scene load_steps=52 format=4 uid="uid://b47kkbptq35is"]
 
 [ext_resource type="Texture2D" uid="uid://dg7t8xynj3wmp" path="res://assets/Art/background/PineForestParallax/MorningLayer6.png" id="1_e1nkf"]
 [ext_resource type="Texture2D" uid="uid://dijf7y23k6yul" path="res://assets/Art/background/PineForestParallax/MorningLayer4.png" id="2_rbwyy"]
@@ -372,6 +372,8 @@ animations = [{
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_su1cr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mgeiv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rbwyy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qwlny"]
 
@@ -967,6 +969,33 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 30
 text = "Different Weapons have different kinds of attack types and different ammo limits. Press the D-PAD keys/Arrow Keys (Left or Right) to switch weapons. Press the 'Fire' key to fire."
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dash Panel" type="Panel" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -48.0
+offset_right = 250.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rbwyy")
+
+[node name="DashTimer" type="RichTextLabel" parent="UI/Dash Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Dash off for: 100 ms"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1

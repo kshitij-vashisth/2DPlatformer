@@ -12,7 +12,8 @@ class_name PigEnemy
 var pig_points: int = 30
 var health: int = 1
 var direction := -1
-var player_follow: bool  = false
+var last_direction = direction
+var direction_changed: bool  = false
 
 enum States {
 	CHASE,
@@ -57,6 +58,7 @@ func reverse_direction()->void:
 		ground_checker.position.x *= -1
 		get_player.scale.x *= -1
 		sprite_2d.scale.x *= -1
+		last_direction = direction
 
 func platform_edge()->void:
 	if not ground_checker.is_colliding():
@@ -64,17 +66,31 @@ func platform_edge()->void:
 		ground_checker.position.x *= -1
 		get_player.scale.x *= -1
 		sprite_2d.scale.x *= -1
+		last_direction = direction
 
 func add_gravity(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+#===============================================================================
+#makes sprite directions all weird
+func direction_changed_timer()-> void:
+	direction_changed = true
+	if direction_changed:
+		await get_tree().create_timer(0.3).timeout
+		direction_changed = false
+#===============================================================================
 
 func _ready() -> void:
 	add_to_group("enemies")
 	
 func _physics_process(delta: float) -> void:
+	if last_direction != direction:
+		ground_checker.position.x *= -1
+		get_player.scale.x *= -1
+		sprite_2d.scale.x *= -1
+		last_direction = direction
+
 	add_gravity(delta)
 	look_for_player()
 	move_enemy()
