@@ -10,6 +10,10 @@
 #====================================================================
 
 #ImmediateToDos============================================================================================
+* add cutscene that explains the situation of choosing between upgrade and answers
+ - if you don't get answers you play the game again from world 1-1
+ - no boss battle at end
+* add trap to game
 * add screen shake on damage
 * add gamepad vibrations
 * add an enemy that follows you around in next level
