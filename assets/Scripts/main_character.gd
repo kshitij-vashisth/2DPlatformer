@@ -129,12 +129,12 @@ func double_jumping_state_setter ()->void:
 var knockback_timer := 0.0
 const KNOCKBACK_DURATION := 0.8  # seconds
 const DASH_SPEED: float = 18200.0
-const SPEED: float = 400.0
-const JUMP_VELOCITY: float = -1000.0
-const WALL_PUSHBACK: float = SPEED*2
+var SPEED: float = GameManager.player_speed
+var JUMP_VELOCITY: float = GameManager.player_jump_height
+var WALL_PUSHBACK: float = SPEED*2
 const STEP_SPEED:float = 12.0
 var jump_count: int = 0
-var dash_duration: float = 2.5  # seconds
+var dash_duration: float = GameManager.player_dash_duration
 var dash_timer: float = 0.0
 #===============================================================
 

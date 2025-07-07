@@ -18,6 +18,23 @@ var current_weapon_index: int = 0
 var inventory: Array = [gun_ammo, sword_strikes, tome_spells]
 #======================================================
 
+#WeaponDamage==========================================
+var bullet_damage: int = 1
+var sword_damage: int = 2
+var tome_damage: int = 5
+#======================================================
+
+#PlayerAttributes===============================================================
+var player_dash_duration: float = 2.5 # seconds
+var player_speed: float = 400.0
+var player_jump_height: float = - 1000.0
+#===============================================================================
+
+
+
+
+
+
 #LevelTransitionUtilities==============================
 var level_list: Array = [
 	"Tutorial-1", "Tutorial-2", "Tutorial-3",
