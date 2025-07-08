@@ -129,7 +129,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		var x_delta: float = body.position.x - position.x
 		sfx_hurt.play()
-		ui.decrease_health()
+		ui.decrease_health(2)
 		if x_delta > 0:
 			body.side_jump(700)
 		else:

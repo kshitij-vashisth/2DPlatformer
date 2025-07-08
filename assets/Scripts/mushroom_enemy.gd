@@ -109,7 +109,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if y_delta < 20 and body.tome_using == false:
 			#print("player health decrease")
 			sfx_hurt.play()
-			ui.decrease_health()
+			ui.decrease_health(1)
 			if x_delta > 0:
 				body.side_jump(500)
 			else:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://d0x1cpoe01oid"]
 
-[ext_resource type="Script" uid="uid://damgpvyfoknf0" path="res://assets/Scenes/Traps/character_body_2d.gd" id="1_co4vh"]
+[ext_resource type="Script" uid="uid://damgpvyfoknf0" path="res://assets/Scripts/saw.gd" id="1_co4vh"]
 [ext_resource type="Texture2D" uid="uid://t511fsoj8mk2" path="res://assets/Art/Traps/Saw/Off.png" id="2_jflcp"]
 [ext_resource type="Texture2D" uid="uid://dsa2v1b2xmy6b" path="res://assets/Art/Traps/Saw/On (38x38).png" id="3_yt1vu"]
 
@@ -86,29 +86,28 @@ radius = 54.037
 [sub_resource type="CircleShape2D" id="CircleShape2D_auiqh"]
 radius = 30.0666
 
-[node name="Saw" type="Node"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(500, 300)
-collision_layer = 8
+[node name="Saw" type="CharacterBody2D"]
+collision_layer = 64
 collision_mask = 0
 script = ExtResource("1_co4vh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_t4tn3")
 animation = &"on"
 autoplay = "on"
-frame_progress = 0.379985
+frame_progress = 0.952959
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
-collision_layer = 8
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_5wems")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_auiqh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

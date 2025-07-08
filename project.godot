@@ -135,6 +135,7 @@ grapple_shoot={
 2d_physics/layer_4="Enemies and Collectibles"
 2d_physics/layer_5="Walls"
 2d_physics/layer_6="Collectibles"
+2d_physics/layer_7="Traps"
 
 [physics]
 

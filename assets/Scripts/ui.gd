@@ -62,11 +62,14 @@ func _ready() -> void:
 func _game_over() -> void:
 	get_tree().change_scene_to_file("res://assets/Scenes/menu/game_over.tscn")
 
-func decrease_health() -> void:
-	GameManager.hearts -= 1
+func decrease_health(damage:int) -> void:
+	if GameManager.hearts != 0:
+		GameManager.hearts -= damage
+		update_hearts()
+		
 	#print("Lives left:", GameManager.lives)
-	update_hearts()
-	if GameManager.hearts == 0:
+	
+	if GameManager.hearts <= 0:
 		if GameManager.lives == 0:
 			call_deferred("_game_over")
 		else:
