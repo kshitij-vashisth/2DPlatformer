@@ -396,6 +396,7 @@ texture_filter = 1
 position = Vector2(561, 83)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2wepu")
+animation = &"warped"
 autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="Dave"]
