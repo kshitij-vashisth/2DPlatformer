@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
+config/name="Dangerous Dave 2.0"
 run/main_scene="uid://kucrafrrh8h1"
 config/features=PackedStringArray("4.4", "Mobile")
+config/icon="uid://cdjc5nm8atfci"
 
 [autoload]
 

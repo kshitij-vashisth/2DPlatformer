@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://byydrr8rulid8" path="res://assets/Art/terrain/Terrain (16x16).png" id="3_c44no"]
 [ext_resource type="PackedScene" uid="uid://coleu2na2nn1l" path="res://assets/Scenes/game_objects/warp_in.tscn" id="3_ype5v"]
 [ext_resource type="Texture2D" uid="uid://dw000aoicb3un" path="res://assets/Art/background/AnotherWorld/another-world-tileset.png" id="4_ype5v"]
-[ext_resource type="PackedScene" uid="uid://ciy7f4sonp547" path="res://assets/Scenes/levels/LevelTransitionScreen.tscn" id="5_2baat"]
+[ext_resource type="PackedScene" uid="uid://rjixqfxsf4os" path="res://assets/Scenes/menu/demo_winner.tscn" id="5_2baat"]
 [ext_resource type="Texture2D" uid="uid://7c15qlpui8xj" path="res://assets/Art/background/lightning (1).png" id="7_1idtk"]
 [ext_resource type="AudioStream" uid="uid://dyjcbaxsjeodx" path="res://assets/sfx/thunder-245174.mp3" id="8_s2pnn"]
 [ext_resource type="AudioStream" uid="uid://bf418mpvimiwn" path="res://assets/sfx/concrete-footsteps-6752.mp3" id="8_vtkfq"]

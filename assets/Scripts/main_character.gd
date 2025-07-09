@@ -343,6 +343,11 @@ func side_jump(x) -> void:
 	#velocity.y = JUMP_VELOCITY/2
 	velocity.x = x
 	knockback_timer = KNOCKBACK_DURATION
+
+func vertical_knock() -> void:
+	is_sliding = false  # Prevent slide state carryover
+	velocity.y = JUMP_VELOCITY/2
+	knockback_timer = KNOCKBACK_DURATION
 	
 func spawn_dash_smoke(direction) -> void:
 	var smoke_node = dash_smoke.instantiate()
