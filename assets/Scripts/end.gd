@@ -2,6 +2,7 @@ extends Area2D
 @export var warp_out: PackedScene
 @export var target_level : PackedScene
 
+
 func spawn_warp(player_position: Vector2) -> void:
 	var warp_node = warp_out.instantiate()
 	warp_node.global_position = player_position
@@ -15,6 +16,9 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		GameManager.level_index += 1
+		if GameManager.level_index == 3:
+			GameManager.tutorial_completed = true
+		GameManager.save_to_file()
 		$sfx_warp_in.play()
 		body.hide()
 		spawn_warp(body.global_position)

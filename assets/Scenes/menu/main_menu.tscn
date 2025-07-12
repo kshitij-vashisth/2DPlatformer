@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://kucrafrrh8h1"]
+[gd_scene load_steps=62 format=4 uid="uid://kucrafrrh8h1"]
 
 [ext_resource type="Script" uid="uid://ggvs8agr5dbw" path="res://assets/Scripts/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://dg7t8xynj3wmp" path="res://assets/Art/background/PineForestParallax/MorningLayer6.png" id="3_a7ilj"]
@@ -82,6 +82,8 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nnagu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_655o3"]
 
@@ -559,9 +561,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -27.0
-offset_top = -52.0
+offset_top = -188.0
 offset_right = 225.0
-offset_bottom = 52.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -580,6 +582,37 @@ sprite_frames = SubResource("SpriteFrames_x52ko")
 autoplay = "default"
 frame_progress = 0.0586799
 
+[node name="Continue" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -31.0
+offset_right = 225.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_disabled_color = Color(0.43134, 0.43134, 0.43134, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kwgaw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nnagu")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_u7oun")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0jlf4")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a7ilj")
+text = "Load"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Continue"]
+texture_filter = 1
+position = Vector2(125, 51)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_x52ko")
+autoplay = "default"
+frame_progress = 0.0586799
+
 [node name="Exit" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -587,9 +620,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -27.0
-offset_top = 102.0
+offset_top = 128.0
 offset_right = 225.0
-offset_bottom = 206.0
+offset_bottom = 232.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -625,7 +658,7 @@ parameters/looping = true
 
 [node name="MainLogo" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(675, 148)
+position = Vector2(675, 72)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_lb6kl")
 autoplay = "default"
@@ -648,5 +681,6 @@ position = Vector2(-130, -285)
 script = ExtResource("10_nnagu")
 
 [connection signal="pressed" from="Start" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="level3" to="." method="_on_level_3_pressed"]
