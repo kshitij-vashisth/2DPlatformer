@@ -63,25 +63,28 @@ func _game_over() -> void:
 	get_tree().change_scene_to_file("res://assets/Scenes/menu/game_over.tscn")
 
 func decrease_health(damage:int) -> void:
-	if GameManager.hearts > 0:
+	if GameManager.hearts > damage:
 		GameManager.hearts -= damage
 		update_hearts()
 		
 	#print("Lives left:", GameManager.lives)
 	
-	if GameManager.hearts <= 0:
-		if GameManager.lives <= 0:
+	elif GameManager.hearts <= damage:
+		if GameManager.lives <= 0 :
 			call_deferred("_game_over")
 		else:
 			GameManager.lives -= 1
-			GameManager.hearts = 3
-			#player.set_physics_process(false)
-			#player.set_process(false)
-			#player.velocity = Vector2.ZERO
-			#player.hide()
-			spawn_defeat()
-			await get_tree().create_timer(1.2).timeout
-			call_deferred("_live_gone_screen")
+			if GameManager.lives <=0:
+				call_deferred("_game_over")
+			else:
+				GameManager.hearts = 3
+				#player.set_physics_process(false)
+				#player.set_process(false)
+				#player.velocity = Vector2.ZERO
+				#player.hide()
+				spawn_defeat()
+				await get_tree().create_timer(1.2).timeout
+				call_deferred("_live_gone_screen")
 			
 func add_points(points: int) -> void:
 	GameManager.points += points

@@ -6,17 +6,20 @@
 * add warp out on trophy touch ---- done
 * modify lives system --- done
 * add special death animation --- done
+* add save game feature, seen intro Boolean, which level reached, resume game --- done
 * added dash cooldown timer --- done
+* add trap to game --- done
+* add an enemy that follows you around in next level
+* add cutscene that explains the situation of choosing between upgrade and answers --- done
+ - if you don't get answers you play the game again from world 1-1
+ - no boss battle at end if answers not complete
 #====================================================================
 
 #ImmediateToDos============================================================================================
-* add cutscene that explains the situation of choosing between upgrade and answers
- - if you don't get answers you play the game again from world 1-1
- - no boss battle at end if answers not complete
-* add trap to game
+* weapons loading from tutorial into main levels post death --- fix
 * add screen shake on damage
 * add gamepad vibrations
-* add an enemy that follows you around in next level
+
 #==========================================================================================================
 
 #MediumToDos===============================================================================================
@@ -28,5 +31,4 @@
 
 #LateToDos==================================================================================================
 * add special teleportation within levels, to other levels
-* add save game feature, seen intro Boolean, which level reached, resume game
 #===========================================================================================================
